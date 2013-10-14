@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package org.radiodns.gcc;
+package org.radiodns.countrycode;
 
 import java.util.List;
 
 /**
  * @author Byrion Smith <byrion.smith@thisisglobal.com>
- * @version 0.1
+ * @version 0.2
  */
 public class Country {
 	String mISOCountryCode;

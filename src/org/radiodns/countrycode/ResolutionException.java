@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package org.radiodns.gcc;
+package org.radiodns.countrycode;
 
 /**
  * @author Byrion Smith <byrion.smith@thisisglobal.com>
- * @version 0.1
+ * @version 0.2
  */
 public class ResolutionException extends Exception {
 

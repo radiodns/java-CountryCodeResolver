@@ -57,13 +57,13 @@
             android:ems="10" />
 
         <Button
-            android:id="@+id/btnResolveGCC"
+            android:id="@+id/btnResolveCountryCode"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp"
             android:onClick="onUIClick"
-            android:text="Resolve GCC" />
+            android:text="Resolve Country Code" />
     </LinearLayout>
 
     <LinearLayout
@@ -72,11 +72,11 @@
         android:orientation="vertical" >
 
         <TextView
-            android:id="@+id/txtGCC"
+            android:id="@+id/txtCountryCodeResult"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="GCC"
+            android:text=""
             android:textAppearance="?android:attr/textAppearanceMedium" />
     </LinearLayout>
 

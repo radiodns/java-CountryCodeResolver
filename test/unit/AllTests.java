@@ -22,10 +22,10 @@ import org.junit.runners.Suite.SuiteClasses;
 
 /**
  * @author Byrion Smith <byrion.smith@thisisglobal.com>
- * @version 0.1
+ * @version 0.2
  */
 @RunWith(Suite.class)
-@SuiteClasses({ ExceptionTests.class, GCCTests.class })
+@SuiteClasses({ ExceptionTests.class, ResolutionTests.class })
 public class AllTests {
 
 }

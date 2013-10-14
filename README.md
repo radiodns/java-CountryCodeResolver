@@ -1,31 +1,30 @@
-java-gccresolver
+java-CountryCodeResolver
 ================
 
-Version 0.1 Beta
+Version 0.2 Beta
 
 ### Introduction
 
-This library helps with RadioDNS lookups by providing the Global Country Code (GCC) required to identify an FM radio service being consumed.
+This library helps with RadioDNS lookups by confirming the ISO 3166 two-letter country code required to identify an FM radio service being consumed.
 
-It is common for FM broadcasts to lack RDS ECC, a field required to form the GCC. This library enables the resolution of the GCC taking as inputs the RDS PI and the two-letter country code of the physical location of the radio device.
+It is common for FM broadcasts to lack RDS ECC, a field which would otherwise confirm the country of origin of the broadcast. Other information such as the physical location of the device could be used on its own, however that doesn't consider the scenario of being on or close to a country border. This library enables the accurate resolution of the country of origin by taking as inputs the RDS PI and the two-letter country code of the physical location of the radio device.
 
 This is beta code which requires further work.
 
 For more information about RadioDNS, please see the official documentation: [http://radiodns.org/documentation/](http://radiodns.org/documentation/)
-
+ 
 
 ### Getting Started
-
 The library has one method:
 
-	String getGCC(String isoCountryCode, String piCode) throws ResolutionException
+	String resolveCountryCode(String isoCountryCode, String piCode) throws ResolutionException
 
 The method takes two arguments:
 
 1. An ISO 3166 two-letter country code representing the country the radio device is physically located within. This could be obtained using GPS or cell-triangulation etc.
 2. The RDS PI Code received from the FM broadcast.
 
-Given the two arguments the method will return the GCC taking into account border situations where the radio device may be in one country whilst receiving a broadcast originating from another. The library does this by comparing the first nibble of the received RDS PI Code with the Country ID assigned to nearby countries.
+Given the two arguments the method will return an ISO 3166 two-letter country code taking into account border situations where the radio device may be in one country whilst receiving a broadcast originating from another. The library does this by comparing the first nibble of the received RDS PI Code with the Country ID assigned to nearby countries.
 
 Example:
 
@@ -33,15 +32,15 @@ Example:
 		
 		try {
 
-			String gcc = resolver.getGCC("CH", "D479");		
+			String countryCode = resolver.resolveCountryCode("CH", "D479");		
 
-			System.out.println("GCC: " + gcc);
+			System.out.println("Country Code: " + countryCode);
 			
 		} catch (ResolutionException e) {
 			e.printStackTrace();
 		}
 
-In the above example the radio device has located itself within Switzerland (CH), but the first nibble of the received RDS PI is not Switzerland's Country ID of '4'. Here the library would return a GCC of 'de0', having identified the FM broadcast as a German station and assuming the radio device must be near the border. 
+In the above example the radio device has located itself within Switzerland (CH), but the first nibble of the received RDS PI is not Switzerland's Country ID of '4'. Here the library would return a country code of 'DE', having identified the FM broadcast as a German station and assuming the radio device must be near the border. 
 
 
 ### Data Sources

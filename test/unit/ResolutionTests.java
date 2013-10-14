@@ -19,14 +19,14 @@ package unit;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-import org.radiodns.gcc.ResolutionException;
-import org.radiodns.gcc.Resolver;
+import org.radiodns.countrycode.ResolutionException;
+import org.radiodns.countrycode.Resolver;
 
 /**
  * @author Byrion Smith <byrion.smith@thisisglobal.com>
- * @version 0.1
+ * @version 0.2
  */
-public class GCCTests {
+public class ResolutionTests {
 
 	/*
 	 * Tests where the given PI Code matches the Country Code
@@ -34,22 +34,22 @@ public class GCCTests {
 	@Test
 	public void testCorrectCountryCode1() throws ResolutionException {
 		Resolver resolver = new Resolver();
-		assertEquals("CH + 4479 must be 4e1", "4e1",
-				resolver.getGCC("CH", "4479"));
+		assertEquals("CH + 4479 must be CH", "CH",
+				resolver.resolveCountryCode("CH", "4479"));
 	}
 
 	@Test
 	public void testCorrectCountryCode2() throws ResolutionException {
 		Resolver resolver = new Resolver();
-		assertEquals("GB + C479 must be ce1", "ce1",
-				resolver.getGCC("GB", "C479"));
+		assertEquals("GB + C479 must be GB", "GB",
+				resolver.resolveCountryCode("GB", "C479"));
 	}
 
 	@Test
 	public void testCorrectCountryCode3() throws ResolutionException {
 		Resolver resolver = new Resolver();
-		assertEquals("KR + E479 must be ef1", "ef1",
-				resolver.getGCC("KR", "E479"));
+		assertEquals("KR + E479 must be KR", "KR",
+				resolver.resolveCountryCode("KR", "E479"));
 	}
 
 	/*
@@ -59,22 +59,22 @@ public class GCCTests {
 	@Test
 	public void testAdjacentCountryCode1() throws ResolutionException {
 		Resolver resolver = new Resolver();
-		assertEquals("CH + D479 must be de0", "de0",
-				resolver.getGCC("CH", "D479"));
+		assertEquals("CH + D479 must be DE", "DE",
+				resolver.resolveCountryCode("CH", "D479"));
 	}
 
 	@Test
 	public void testAdjacentCountryCode2() throws ResolutionException {
 		Resolver resolver = new Resolver();
-		assertEquals("GB + 2479 must be 2e3", "2e3",
-				resolver.getGCC("GB", "2479"));
+		assertEquals("GB + 2479 must be IE", "IE",
+				resolver.resolveCountryCode("GB", "2479"));
 	}
 
 	@Test
 	public void testAdjacentCountryCode3() throws ResolutionException {
 		Resolver resolver = new Resolver();
-		assertEquals("KP + E479 must be ef1", "ef1",
-				resolver.getGCC("KP", "E479"));
+		assertEquals("KP + E479 must be KR", "KR",
+				resolver.resolveCountryCode("KP", "E479"));
 	}
 
 }

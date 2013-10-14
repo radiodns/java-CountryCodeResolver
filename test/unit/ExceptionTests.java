@@ -17,12 +17,12 @@
 package unit;
 
 import org.junit.Test;
-import org.radiodns.gcc.ResolutionException;
-import org.radiodns.gcc.Resolver;
+import org.radiodns.countrycode.ResolutionException;
+import org.radiodns.countrycode.Resolver;
 
 /**
  * @author Byrion Smith <byrion.smith@thisisglobal.com>
- * @version 0.1
+ * @version 0.2
  */
 public class ExceptionTests {
 
@@ -33,19 +33,19 @@ public class ExceptionTests {
 	@Test(expected = IllegalArgumentException.class)
 	public void testInvalidCountryCode1() throws ResolutionException {
 		Resolver resolver = new Resolver();
-		resolver.getGCC(null, "C479");
+		resolver.resolveCountryCode(null, "C479");
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testInvalidCountryCode2() throws ResolutionException {
 		Resolver resolver = new Resolver();
-		resolver.getGCC("X", "C479");
+		resolver.resolveCountryCode("X", "C479");
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testInvalidCountryCode3() throws ResolutionException {
 		Resolver resolver = new Resolver();
-		resolver.getGCC("XXX", "C479");
+		resolver.resolveCountryCode("XXX", "C479");
 	}
 	
 	/*
@@ -54,7 +54,7 @@ public class ExceptionTests {
 	@Test(expected = ResolutionException.class)
 	public void testUnknownCountryCode() throws ResolutionException {
 		Resolver resolver = new Resolver();
-		resolver.getGCC("XX", "C479");
+		resolver.resolveCountryCode("XX", "C479");
 	}
 	
 	/*
@@ -63,25 +63,25 @@ public class ExceptionTests {
 	@Test(expected = IllegalArgumentException.class)
 	public void testInvalidPICode1() throws ResolutionException {
 		Resolver resolver = new Resolver();
-		resolver.getGCC("CH", null);
+		resolver.resolveCountryCode("CH", null);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testInvalidPICode2() throws ResolutionException {
 		Resolver resolver = new Resolver();
-		resolver.getGCC("CH", "A");
+		resolver.resolveCountryCode("CH", "A");
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testInvalidPICode3() throws ResolutionException {
 		Resolver resolver = new Resolver();
-		resolver.getGCC("CH", "AAAAA");
+		resolver.resolveCountryCode("CH", "AAAAA");
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testInvalidPICode4() throws ResolutionException {
 		Resolver resolver = new Resolver();
-		resolver.getGCC("CH", "XXXX");
+		resolver.resolveCountryCode("CH", "XXXX");
 	}
 
 	/*
@@ -90,7 +90,7 @@ public class ExceptionTests {
 	@Test(expected = ResolutionException.class)
 	public void testUnadjacentPICode() throws ResolutionException {
 		Resolver resolver = new Resolver();
-		resolver.getGCC("CH", "B479");
+		resolver.resolveCountryCode("CH", "B479");
 	}
 
 }

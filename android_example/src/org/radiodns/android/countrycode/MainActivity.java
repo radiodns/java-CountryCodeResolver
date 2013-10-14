@@ -14,14 +14,15 @@
  * limitations under the License.
  */
 
-package org.radiodns.android.gcc;
+package org.radiodns.android.countrycode;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-import org.radiodns.gcc.ResolutionException;
-import org.radiodns.gcc.Resolver;
+import org.radiodns.android.countrycode.R;
+import org.radiodns.countrycode.ResolutionException;
+import org.radiodns.countrycode.Resolver;
 
 import android.app.Activity;
 import android.content.Context;
@@ -41,14 +42,14 @@ import android.widget.TextView;
 
 /**
  * This simple Activity will attempt to determine the device location and the
- * corresponding ISO Country Code. The GCC can then be resolved with the ISO
- * code and given RDS PI Code.
+ * corresponding ISO Country Code. The correct Country Code for RadioDNS lookups
+ * can then be resolved with the ISO code and given RDS PI Code.
  * 
  * The ISO Country Code is obtained using the Geocoder class. Alternatively it
  * can be typed into the UI.
  * 
  * @author Byrion Smith <byrion.smith@thisisglobal.com>
- * @version 0.1
+ * @version 0.2
  */
 public class MainActivity extends Activity {
 
@@ -114,12 +115,12 @@ public class MainActivity extends Activity {
 					LocationManager.GPS_PROVIDER, 1, 1, mListener);
 
 			break;
-		case R.id.btnResolveGCC:
+		case R.id.btnResolveCountryCode:
 
 			// grab the country code and PI code from the text fields and supply
-			// them to the GCC Resolver library
+			// them to the Resolver library
 			
-			TextView txtGCC = (TextView) findViewById(R.id.txtGCC);
+			TextView txtGCC = (TextView) findViewById(R.id.txtCountryCodeResult);
 			try {
 
 				EditText edtRdsPi = (EditText) findViewById(R.id.edtPICode);
@@ -129,12 +130,12 @@ public class MainActivity extends Activity {
 				String countryCode = edtCountryCode.getText().toString();
 
 				Resolver resolver = new Resolver();				
-				String gcc = resolver.getGCC(countryCode, rdsPi);
+				String resolvedCC = resolver.resolveCountryCode(countryCode, rdsPi);
 
-				Log.d(TAG, String.format("GCC: %s (%s, %s)", gcc, countryCode,
+				Log.d(TAG, String.format("CountryCode: %s (%s, %s)", resolvedCC, countryCode,
 						rdsPi));
 
-				txtGCC.setText(String.format("%s (%s, %s)", gcc, countryCode,
+				txtGCC.setText(String.format("%s (%s, %s)", resolvedCC, countryCode,
 						rdsPi));
 
 			} catch (ResolutionException e) {

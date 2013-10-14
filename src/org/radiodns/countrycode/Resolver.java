@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.radiodns.gcc;
+package org.radiodns.countrycode;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -30,11 +30,11 @@ import java.util.Map;
 /**
  * Given the ISO 3166 two-letter country code for a listener's current physical
  * location and the received RDS PI Code from an FM broadcast, this class will
- * enable the resolution of the Global Country Code (GCC), required to discover
- * RadioDNS services available for a given station.
+ * enable the resolution of the correct ISO Country Code for the service,
+ * required to discover RadioDNS services available for a given station.
  * 
  * @author Byrion Smith <byrion.smith@thisisglobal.com>
- * @version 0.1
+ * @version 0.2
  */
 public class Resolver {
 
@@ -44,8 +44,7 @@ public class Resolver {
 		// parse countries csv table
 		try {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(
-					Thread.currentThread().getContextClassLoader()
-							.getResourceAsStream("countries.csv")));
+					this.getClass().getResourceAsStream("countries.csv")));
 
 			String nextLine;
 			while ((nextLine = reader.readLine()) != null) {
@@ -65,16 +64,16 @@ public class Resolver {
 	}
 
 	/**
-	 * Resolve the Global Country Code (GCC) based on the ISO 3166 two-letter
+	 * Resolve the correct ISO 3166 two-letter Country Code based on the 
 	 * country code of the listener's physical location and the received RDS PI
 	 * Code from an FM broadcast
 	 * 
 	 * @param isoCountryCode 	ISO 3166 two-letter country code
 	 * @param piCode 			RDS PI Code
-	 * @return					Global Country Code (GCC)
+	 * @return					ISO 3166 two-letter country code
 	 * @throws ResolutionException
 	 */
-	public String getGCC(String isoCountryCode, String piCode)
+	public String resolveCountryCode(String isoCountryCode, String piCode)
 			throws ResolutionException {
 
 		// input validation
@@ -105,8 +104,8 @@ public class Resolver {
 
 		if (compareCountryIds(reportedCountry, piCountryId)) {
 			// the country id of the received RDS PI Code matches the country id
-			// of the reported location, return the GCC
-			return createGCC(piCountryId, reportedCountry.getECC());
+			// of the reported location, return the ISO country code
+			return reportedCountry.getISOCountryCode().toUpperCase(Locale.ENGLISH);
 		} else {
 			// the country id & pi code do not match. Check countries adjacent
 			// to the reported country to find a match (resolving
@@ -115,13 +114,13 @@ public class Resolver {
 				Country country = mCountryLookupTable.get(countryCode);
 
 				if (compareCountryIds(country, piCountryId)) {
-					// an adjacent country matches, return the GCC
-					return createGCC(piCountryId, country.getECC());
+					// an adjacent country matches, return the ISO country code
+					return country.getISOCountryCode().toUpperCase(Locale.ENGLISH);
 				}
 			}
 
 			throw new ResolutionException(
-					"A GCC could not be resolved for the given ISO Country Code and PI Code. No match found in lookup table");
+					"An ISO Country Code could not be resolved for the given ISO Country Code and PI Code. No match found in lookup table");
 		}
 	}
 	
@@ -139,18 +138,6 @@ public class Resolver {
 			}
 		}
 		return false;
-	}
-
-	/**
-	 * Create the Global Country Code (GCC) - The Country ID (first nibble of
-	 * the RDS PI code) concatenated with the country's RDS ECC
-	 * 
-	 * @param countryId 	Country ID (first nibble of RDS PI Code)
-	 * @param ecc 			RDS ECC
-	 * @return				Global Country Code (GCC)
-	 */
-	private String createGCC(String countryId, String ecc) {
-		return countryId + ecc;
 	}
 	
 	/**
