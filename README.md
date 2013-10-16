@@ -7,7 +7,7 @@ Version 0.2 Beta
 
 This library helps with RadioDNS lookups by confirming the ISO 3166 two-letter country code required to identify an FM radio service being consumed.
 
-It is common for FM broadcasts to lack RDS ECC, a field which would otherwise confirm the country of origin of the broadcast. Other information such as the physical location of the device could be used on its own, however that doesn't consider the scenario of being on or close to a country border. This library enables the accurate resolution of the country of origin by taking as inputs the RDS PI and the two-letter country code of the physical location of the radio device.
+It is common for FM broadcasts to lack RDS ECC, a field which would otherwise confirm the country of origin of the broadcast. Other information such as the physical location of the device could be used on its own, however that doesn't consider the scenario of being on or close to a country border. This library enables the accurate resolution of the country of origin by taking as inputs the RDS PI and the two-letter country code of the physical location of the radio device. It also enables the resolution of Country Code for a given RDS ECC and RDS PI code combination.
 
 This is beta code which requires further work.
 
@@ -15,16 +15,19 @@ For more information about RadioDNS, please see the official documentation: [htt
  
 
 ### Getting Started
-The library has one method:
+The library has two methods.
 
-	String resolveCountryCode(String isoCountryCode, String piCode) throws ResolutionException
-
-The method takes two arguments:
+	String resolveCountryCodeFromCountryCode(String isoCountryCode, String piCode) throws ResolutionException
+	
+	String resolveCountryCodeFromECC(String ecc, String piCode) throws ResolutionException
+	
+The three possible arguments are:
 
 1. An ISO 3166 two-letter country code representing the country the radio device is physically located within. This could be obtained using GPS or cell-triangulation etc.
 2. The RDS PI Code received from the FM broadcast.
+3. The RDS Extended Country Code (ECC) value received from the FM broadcast.
 
-Given the two arguments the method will return an ISO 3166 two-letter country code taking into account border situations where the radio device may be in one country whilst receiving a broadcast originating from another. The library does this by comparing the first nibble of the received RDS PI Code with the Country ID assigned to nearby countries.
+The method will return an ISO 3166 two-letter country code for the country matching the Country Code/RDS ECC and RDS PI Code combination.
 
 Example:
 
@@ -32,7 +35,7 @@ Example:
 		
 		try {
 
-			String countryCode = resolver.resolveCountryCode("CH", "D479");		
+			String countryCode = resolver.resolveCountryCodeFromCountryCode("CH", "D479");		
 
 			System.out.println("Country Code: " + countryCode);
 			

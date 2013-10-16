@@ -130,7 +130,7 @@ public class MainActivity extends Activity {
 				String countryCode = edtCountryCode.getText().toString();
 
 				Resolver resolver = new Resolver();				
-				String resolvedCC = resolver.resolveCountryCode(countryCode, rdsPi);
+				String resolvedCC = resolver.resolveCountryCodeFromCountryCode(countryCode, rdsPi);
 
 				Log.d(TAG, String.format("CountryCode: %s (%s, %s)", resolvedCC, countryCode,
 						rdsPi));
