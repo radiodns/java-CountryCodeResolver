@@ -35,21 +35,21 @@ public class ResolutionTests {
 	public void testCorrectCountryCode1() throws ResolutionException {
 		Resolver resolver = new Resolver();
 		assertEquals("CH + 4479 must be CH", "CH",
-				resolver.resolveCountryCode("CH", "4479"));
+				resolver.resolveCountryCodeFromCountryCode("CH", "4479"));
 	}
 
 	@Test
 	public void testCorrectCountryCode2() throws ResolutionException {
 		Resolver resolver = new Resolver();
 		assertEquals("GB + C479 must be GB", "GB",
-				resolver.resolveCountryCode("GB", "C479"));
+				resolver.resolveCountryCodeFromCountryCode("GB", "C479"));
 	}
 
 	@Test
 	public void testCorrectCountryCode3() throws ResolutionException {
 		Resolver resolver = new Resolver();
 		assertEquals("KR + E479 must be KR", "KR",
-				resolver.resolveCountryCode("KR", "E479"));
+				resolver.resolveCountryCodeFromCountryCode("KR", "E479"));
 	}
 
 	/*
@@ -60,21 +60,45 @@ public class ResolutionTests {
 	public void testAdjacentCountryCode1() throws ResolutionException {
 		Resolver resolver = new Resolver();
 		assertEquals("CH + D479 must be DE", "DE",
-				resolver.resolveCountryCode("CH", "D479"));
+				resolver.resolveCountryCodeFromCountryCode("CH", "D479"));
 	}
 
 	@Test
 	public void testAdjacentCountryCode2() throws ResolutionException {
 		Resolver resolver = new Resolver();
 		assertEquals("GB + 2479 must be IE", "IE",
-				resolver.resolveCountryCode("GB", "2479"));
+				resolver.resolveCountryCodeFromCountryCode("GB", "2479"));
 	}
 
 	@Test
 	public void testAdjacentCountryCode3() throws ResolutionException {
 		Resolver resolver = new Resolver();
 		assertEquals("KP + E479 must be KR", "KR",
-				resolver.resolveCountryCode("KP", "E479"));
+				resolver.resolveCountryCodeFromCountryCode("KP", "E479"));
+	}
+	
+	/*
+	 * Tests where the given PI Code matches the ECC
+	 */
+	@Test
+	public void testCorrectECC1() throws ResolutionException {
+		Resolver resolver = new Resolver();
+		assertEquals("E1 + 4479 must be CH", "CH",
+				resolver.resolveCountryCodeFromECC("E1", "4479"));
+	}
+
+	@Test
+	public void testCorrectECC2() throws ResolutionException {
+		Resolver resolver = new Resolver();
+		assertEquals("E1 + C479 must be GB", "GB",
+				resolver.resolveCountryCodeFromECC("E1", "C479"));
+	}
+
+	@Test
+	public void testCorrectECC3() throws ResolutionException {
+		Resolver resolver = new Resolver();
+		assertEquals("F1 + E479 must be KR", "KR",
+				resolver.resolveCountryCodeFromECC("F1", "E479"));
 	}
 
 }

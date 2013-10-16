@@ -23,10 +23,10 @@ import java.util.List;
  * @version 0.2
  */
 public class Country {
-	String mISOCountryCode;
-	String mECC;
-	List<String> mCountryIds;
-	List<String> mNearbyCountries;
+	private String mISOCountryCode;
+	private String mECC;
+	private List<String> mCountryIds;
+	private List<String> mNearbyCountries;
 
 	public Country(String isoCountryCode, String ecc, List<String> countryId,
 			List<String> nearbyCountries) {

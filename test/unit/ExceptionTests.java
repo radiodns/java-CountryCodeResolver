@@ -33,19 +33,19 @@ public class ExceptionTests {
 	@Test(expected = IllegalArgumentException.class)
 	public void testInvalidCountryCode1() throws ResolutionException {
 		Resolver resolver = new Resolver();
-		resolver.resolveCountryCode(null, "C479");
+		resolver.resolveCountryCodeFromCountryCode(null, "C479");
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testInvalidCountryCode2() throws ResolutionException {
 		Resolver resolver = new Resolver();
-		resolver.resolveCountryCode("X", "C479");
+		resolver.resolveCountryCodeFromCountryCode("X", "C479");
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testInvalidCountryCode3() throws ResolutionException {
 		Resolver resolver = new Resolver();
-		resolver.resolveCountryCode("XXX", "C479");
+		resolver.resolveCountryCodeFromCountryCode("XXX", "C479");
 	}
 	
 	/*
@@ -54,8 +54,51 @@ public class ExceptionTests {
 	@Test(expected = ResolutionException.class)
 	public void testUnknownCountryCode() throws ResolutionException {
 		Resolver resolver = new Resolver();
-		resolver.resolveCountryCode("XX", "C479");
+		resolver.resolveCountryCodeFromCountryCode("XX", "C479");
 	}
+	
+	/*
+	 * Invalid ECC
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void testInvalidECC1() throws ResolutionException {
+		Resolver resolver = new Resolver();
+		resolver.resolveCountryCodeFromECC(null, "c479");
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testInvalidECC2() throws ResolutionException {
+		Resolver resolver = new Resolver();
+		resolver.resolveCountryCodeFromECC("", "c479");
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testInvalidECC3() throws ResolutionException {
+		Resolver resolver = new Resolver();
+		resolver.resolveCountryCodeFromECC("X", "c479");
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testInvalidECC4() throws ResolutionException {
+		Resolver resolver = new Resolver();
+		resolver.resolveCountryCodeFromECC("XX", "c479");
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testInvalidECC5() throws ResolutionException {
+		Resolver resolver = new Resolver();
+		resolver.resolveCountryCodeFromECC("XXX", "c479");
+	}
+	
+	/*
+	 * ECC not found in lookup table
+	 */
+	@Test(expected = ResolutionException.class)
+	public void testUnknownECC() throws ResolutionException {
+		Resolver resolver = new Resolver();
+		resolver.resolveCountryCodeFromECC("A0", "c479");
+	}
+	
 	
 	/*
 	 * Invalid PI Code
@@ -63,34 +106,43 @@ public class ExceptionTests {
 	@Test(expected = IllegalArgumentException.class)
 	public void testInvalidPICode1() throws ResolutionException {
 		Resolver resolver = new Resolver();
-		resolver.resolveCountryCode("CH", null);
+		resolver.resolveCountryCodeFromCountryCode("CH", null);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testInvalidPICode2() throws ResolutionException {
 		Resolver resolver = new Resolver();
-		resolver.resolveCountryCode("CH", "A");
+		resolver.resolveCountryCodeFromCountryCode("CH", "A");
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testInvalidPICode3() throws ResolutionException {
 		Resolver resolver = new Resolver();
-		resolver.resolveCountryCode("CH", "AAAAA");
+		resolver.resolveCountryCodeFromCountryCode("CH", "AAAAA");
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testInvalidPICode4() throws ResolutionException {
 		Resolver resolver = new Resolver();
-		resolver.resolveCountryCode("CH", "XXXX");
+		resolver.resolveCountryCodeFromCountryCode("CH", "XXXX");
 	}
 
 	/*
-	 * Country Code and PI Code combination which doesn't resolve a GCC
+	 * Country Code and PI Code combination which doesn't resolve a country code
 	 */
 	@Test(expected = ResolutionException.class)
-	public void testUnadjacentPICode() throws ResolutionException {
+	public void testUnadjacentPICode1() throws ResolutionException {
 		Resolver resolver = new Resolver();
-		resolver.resolveCountryCode("CH", "B479");
+		resolver.resolveCountryCodeFromCountryCode("CH", "B479");
 	}
 
+	/*
+	 * ECC and PI Code combination which doesn't resolve a country code
+	 */
+	@Test(expected = ResolutionException.class)
+	public void testUnadjacentPICode2() throws ResolutionException {
+		Resolver resolver = new Resolver();
+		resolver.resolveCountryCodeFromECC("E1", "A479");
+	}
+	
 }
