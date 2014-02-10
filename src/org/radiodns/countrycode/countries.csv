@@ -1,195 +1,236 @@
-cn,f0,c,af;bt;hk;in;kz;kp;kg;la;mo;mn;np;pk;ru;tj;vn
-ru,e0,7,az;by;cn;ee;fi;ge;kz;kp;lv;lt;mn;no;pl;ua
-br,a2,b,ar;bo;co;gf;gy;py;pe;sr;uy;ve
-cd,test,test,ao;bi;cf;cg;rw;ss;tz;ug;zm
-de,e0,d;1,at;be;cz;dk;fr;lu;nl;pl;ch
-at,e0,a,cz;de;hu;it;li;sk;si;ch
-fr,e1,f,ad;be;de;it;lu;mc;es;ch
-rs,e2,d,ba;bg;hr;hu;mk;me;ro
-tz,d1,d,bi;cd;ke;mw;mz;rw;ug;zm
-tr,e3,3,am;az;bg;ge;gr;ir;iq;sy
-zm,d2,e,ao;bw;cd;mw;mz;na;tz;zw
-dz,e0,2,ly;ml;mr;ma;ne;tn;eh
-hu,e0,b,at;hr;ro;rs;sk;si;ua
-in,f2,5,af;bd;bt;cn;np;pk;lk
-ir,f1,8,af;am;az;iq;pk;tr;tm
-ml,d0,5,dz;bf;gn;ci;mr;ne;sn
-ne,d2,8,dz;bj;bf;td;ly;ml;ng
-pl,e4,8,by;cz;de;lt;ru;sk;ua
-sa,f0,9,iq;jo;kw;om;qa;ae;ye
-sd,d3,c,cf;td;eg;er;et;ly;ss
-ua,e4,6,by;hu;md;pl;ro;ru;sk
-af,f0,a,cn;ir;pk;tj;tm;uz
-bf,d0,b,bj;ci;gh;ml;ne;tg
-cm,d0,1,cf;td;cg;gq;ga;ng
-cf,d0,2,cm;td;cd;cg;ss;sd
-td,d2,9,cm;cf;ly;ne;ng;sd
-et,d1,e,dj;er;ke;so;ss;sd
-gn,d0,9,ci;gw;lr;ml;sn;sl
-iq,e1,b,ir;jo;kw;sa;sy;tr
-it,e0,5,at;fr;sm;si;ch;va
-ly,e1,d,dz;td;eg;ne;sd;tn
-mz,d2,3,mw;za;sz;tz;zm;zw
-za,d0,a,bw;ls;mz;na;sz;zw
-ss,test,test,cf;cd;et;ke;sd;ug
-ar,a2,a,bo;br;cl;py;uy
-az,e3,b,am;ge;ir;ru;tr
-by,e3,f,lv;lt;pl;ru;ua
-bo,a3,1,ar;br;cl;py;pe
-bg,e1,8,gr;mk;ro;rs;tr
-co,a3,2,br;ec;pa;pe;ve
-hr,e3,c,ba;hu;me;rs;si
-ci,d2,c,bf;gh;gn;lr;ml
-il,e0,4,eg;jo;lb;sy
-jo,e1,5,iq;il;sa;sy
-kz,e3,d,cn;kg;ru;tm;uz
-ke,d2,6,et;so;ss;tz;ug
-la,f3,1,kh;cn;th;vn
-mk,e4,3,al;bg;gr;rs
-me,e3,1,al;ba;hr;rs
-pe,a4,7,bo;br;cl;co;ec
-cg,d0,c,ao;cm;cf;cd;ga
-ro,e1,e,bg;hu;md;rs;ua
-sn,d1,7,gm;gn;gw;ml;mr
-sk,e2,5,at;cz;hu;pl;ua
-es,e2,e,ad;fr;gi;pt;ma
-ch,e1,4,at;fr;it;li;de
-sy,e2,6,iq;il;jo;lb;tr
-ug,d2,4,cd;ke;rw;ss;tz
-uz,e4,b,af;kz;kg;tj;tm
-al,e0,9,gr;mk;me
-ao,d0,6,cd;cg;na;zm
-am,e4,a,az;ge;ir;tr
-be,e0,6,fr;de;lu;nl
-bj,d0,e,bf;ne;ng;tg
-bw,d1,b,na;za;zm;zw
-cz,e2,2,at;de;pl;sk
-eg,e0,f,il;ly;sd
-ge,e4,c,am;az;ru;tr
-gr,e1,1,al;bg;tr;mk
-gt,a4,1,bz;sv;hn;mx
-kg,e4,3,cn;kz;tj;uz
-lv,e3,9,by;ee;lt;ru
-lt,e2,c,by;lv;pl;ru
-mr,d1,4,dz;ml;sn;eh
-na,d1,1,ao;bw;za;zm
-ng,d1,f,bj;cm;td;ne
-pk,f1,4,af;cn;in;ir
-rw,d3,5,bi;cd;tz;ug
-si,e4,9,at;hr;it;hu
-tj,e3,5,af;cn;kg;uz
-th,f3,2,kh;la;my
-tm,e4,e,af;ir;kz;uz
-zw,d2,2,bw;mz;za;zm
-ba,e4,f,hr;me;rs
-bi,d1,9,cd;rw;tz
-kh,f2,3,la;th;vn
-cl,a3,c,ar;bo;pe
-dj,d0,3,er;et;so
-er,test,test,dj;et;sd
-fi,e1,6,no;se;ru
-ga,d0,8,cm;cg;gq
-gh,d1,3,bf;ci;tg
-gy,a3,f,br;sr;ve
-hn,a4,2,gt;sv;ni
-id,f2,c,my;pg
-lr,d1,2,gn;ci;sl
-lu,e1,7,be;fr;de
-mw,d0,f,mz;tz;zm
-my,f0,f,id;th
-mx,a4,f,bz;gt;us
-ma,e2,1,dz;eh;es
-kp,f0,d,cn;kr;ru
-no,e2,f,fi;se;ru
-om,f1,6,sa;ae;ye
-py,a3,6,ar;bo;br
-so,d2,7,dj;et;ke
-tg,d0,d,bj;bf;gh
-ve,a4,e,br;co;gy
-vn,f2,7,kh;cn;la
-eh,d3,3,dz;mr;ma
-ad,e0,3,fr;es
-bd,f1,3,in
-bz,a2,6,gt;mx
-bt,f1,2,cn;in
-cr,a2,8,ni;pa
-ec,a2,3,co;pe
-sv,a4,c,gt;hn
-gq,d0,7,cm;ga
-ee,e4,2,lv;ru
-gf,test,test,br;sr
-gw,d2,a,gn;sn
-kw,f2,1,iq;sa
-lb,e3,a,il;sy
-li,e2,9,at;ch
-md,e4,1,ro;ua
-mn,f3,f,cn;ru
-np,f2,e,cn;in
-nl,e3,8,be;de
-ni,a3,7,cr;hn
-pa,a3,9,co;cr
-sl,d2,1,gn;lr
-sr,a4,8,br;gf;gy
-sz,d2,5,mz;za
-se,e3,e,fi;no
-tn,e2,7,dz;ly
-ae,f2,d,om;sa
-us,a0,1;2;3;4;5;6;7;8;9;a;b;d;e,ca;mx
-uy,a4,9,ar;br
-ye,f3,b,om;sa
-ca,a1,c,us
-cy,e1,2,
-dk,e1,9,
-do,a3,b,
-ht,a4,d,do
-ie,e3,2,gb
-ls,d3,6,za
-mc,e2,b,fr
-pg,f3,9,id
-pt,e0,8,es
-qa,f2,2,sa
-sm,e1,3,it
-kr,f1,e,kp
-lk,f1,c,in
-gm,test,test,sn
-gb,e1,c,ie
-va,e2,4,it
-ag,a2,2,
-au,f0,1;2;3;4;5;6;7;8,
-bs,a2,f,
-bh,f0,e,
-bb,a2,5,
-bv,test,test,
-cv,d1,6,
-km,d1,c,
-ck,test,test,
-cu,a2,9,
-dm,a3,a,
-fj,f1,5,
-gd,a3,d,
-is,e2,a,
-jm,a3,3,
-jp,f2,9,
-je,test,test,
-ki,f1,1,
-mg,d0,4,
-mv,f2,b,
-mt,e0,c,
-mh,test,test,
-mu,d3,a,
-nr,f1,7,
-nz,f1,9,
-nu,test,test,
-pw,test,test,
-ph,f2,8,
-kn,a4,a,
-lc,test,test,
-vc,a5,c,
-ws,test,test,
-sc,d3,8,
-sg,f2,a,
-sb,f1,a,
-to,f3,3,
-tt,a4,6,
-tv,test,test,
-vu,f2,f,
+Afghanistan,AF,F0,A,C:CN;8:IR;4:PK;5:TJ;E:TM;B:UZ
+Albania,AL,E0,9,C:HR;1:GR;5:IT;3:MK;1:ME;D:RS
+Algeria,DZ,E0,2,5:IT;D:LY;5:ML;4:MR;1:MA;8:NE;E:ES;7:TN;3:EH
+American Samoa,AS,XXXX,XXXX,4:WS;3:TO;CK;NU;TK
+Andorra,AD,E0,3,F:FR;E:ES
+Angola,AO,D0,6,CD;C:CG;1:NA;E:ZM
+Anguilla,AI,A2,1,2:AG;8:NL;MF;F:VI
+Antigua and Barbuda,AG,A2,2,A:KN;1:AI;5:MS;F:FR;BL
+Argentina,AR,A2,A,1:BO;B:BR;C:CL;6:PY;9:UY;4:FK
+Armenia,AM,E4,A,B:AZ;C:GE;8:IR;3:TR
+Aruba,AW,A4,3,B:DO;E:VE
+Australia,AU,F0,1;2;3;4;5;6;7;8,C:ID;9:NZ;9:PG;A:SB;NC
+Austria,AT,E0,A,2:CZ;D:DE;1:DE;B:HU;5:IT;9:LI;5:SK;9:SI;4:CH
+Azerbaijan,AZ,E3,B,A:AM;C:GE;8:IR;7:RU;3:TR;E:TM
+Bahamas,BS,A2,F,9:CU;D:HT;1:US;2:US;3:US;4:US;5:US;6:US;7:US;8:US;9:US;A:US;B:US;D:US;E:US;E:TC
+Bahrain,BH,F0,E,8:IR;2:QA;9:SA
+Bangladesh,BD,F1,3,B:MM;5:IN
+Barbados,BB,A2,5,F:FR;F:GY;LC;C:VC;6:TT;E:VE
+Belarus,BY,E3,F,9:LV;C:LT;8:PL;7:RU;6:UA
+Belgium,BE,E0,6,F:FR;D:DE;1:DE;7:LU;8:NL;C:GB
+Belize,BZ,A2,6,1:GT;2:HN;F:MX
+Benin,BJ,D0,E,B:BF;3:GH;8:NE;F:NG;D:TG
+Bermuda,BM,A2,C,
+Bhutan,BT,F1,2,C:CN;5:IN
+Bolivia,BO,A3,1,A:AR;B:BR;C:CL;6:PY;7:PE
+Bosnia and Herzegovina,BA,E4,F,C:HR;1:ME;D:RS
+Botswana,BW,D1,B,1:NA;A:ZA;E:ZM;2:ZW
+Bouvet Island,BV,XXXX,XXXX,
+Brazil,BR,A2,B,A:AR;1:BO;2:CO;F:FR;F:GY;6:PY;7:PE;8:SR;9:UY;E:VE
+British Indian Ocean Territory,IO,XXXX,XXXX,B:MV
+British Virgin Islands,VG,A5,F,8:PR;F:VI
+Brunei,BN,F1,B,F:MY
+Bulgaria,BG,E1,8,1:GR;3:MK;E:RO;D:RS;3:TR
+Burkina Faso,BF,D0,B,E:BJ;C:CI;3:GH;5:ML;8:NE;D:TG
+Burma,MM,F0,B,3:BD;C:CN;5:IN;1:LA;2:TH
+Burundi,BI,D1,9,CD;5:RW;D:TZ
+Cambodia,KH,F2,3,1:LA;2:TH;7:VN
+Cameroon,CM,D0,1,2:CF;9:TD;C:CG;7:GQ;8:GA;F:NG
+Canada,CA,A1,C,1:US;2:US;3:US;4:US;5:US;6:US;7:US;8:US;9:US;A:US;B:US;D:US;E:US;F:GL;F:PM
+Cape Verde,CV,D1,6,8:GM;4:MR;7:SN
+Cayman Islands,KY,A2,7,2:CO;9:CU;2:HN;3:JM
+Central African Republic,CF,D0,2,1:CM;9:TD;CD;C:CG;SS;C:SD
+Chad,TD,D2,9,1:CM;2:CF;D:LY;8:NE;F:NG;C:SD
+Chile,CL,A3,C,A:AR;1:BO;7:PE
+China,CN,F0,C,A:AF;2:BT;B:MM;5:IN;9:JP;D:KZ;D:KP;E:KR;3:KG;1:LA;F:MN;E:NP;4:PK;8:PH;7:RU;5:TJ;7:VN;F:HK;6:MO;D:TW
+Christmas Island,CX,XXXX,XXXX,C:ID
+Cocos,CC,XXXX,XXXX,
+Colombia,CO,A3,2,B:BR;8:CR;B:DO;3:EC;D:HT;2:HN;3:JM;7:NI;9:PA;7:PE;E:VE;7:KY
+Comoros,KM,D1,C,F:FR;4:MG;3:MZ;B:SC;D:TZ;YT
+Democratic Republic of the Congo,CD,XXXX,XXXX,6:AO;9:BI;2:CF;C:CG;5:RW;SS;D:TZ;4:UG;E:ZM
+Republic of the Congo,CG,D0,C,6:AO;1:CM;2:CF;CD;8:GA
+Cook Islands,CK,XXXX,XXXX,1:KI;AS;PF;NU;TK
+Costa Rica,CR,A2,8,2:CO;3:EC;7:NI;9:PA
+Cte d'Ivoire,CI,D2,C,B:BF;3:GH;9:GN;2:LR;5:ML
+Croatia,HR,E3,C,F:BA;B:HU;5:IT;1:ME;D:RS;9:SI
+Cuba,CU,A2,9,F:BS;D:HT;2:HN;3:JM;F:MX;1:US;2:US;3:US;4:US;5:US;6:US;7:US;8:US;9:US;A:US;B:US;D:US;E:US;7:KY
+Curaao,CW,XXXX,XXXX,B:DO;E:VE
+Cyprus,CY,E1,2,F:EG;1:GR;4:IL;A:LB;3:TR
+Czech Republic,CZ,E2,2,A:AT;D:DE;1:DE;8:PL;5:SK
+Denmark,DK,E1,9,D:DE;1:DE;F:NO;8:PL;E:SE;C:GB
+Djibouti,DJ,D0,3,ER;E:ET;7:SO;B:YE
+Dominica,DM,A3,A,F:FR;E:VE
+Dominican Republic,DO,A3,B,2:CO;D:HT;E:VE;3:AW;CW;8:PR;E:TC
+Ecuador,EC,A2,3,2:CO;8:CR;7:PE
+Egypt,EG,E0,F,2:CY;1:GR;4:IL;5:JO;D:LY;9:SA;C:SD;3:TR
+El Salvador,SV,A4,C,1:GT;2:HN;7:NI
+Equatorial Guinea,GQ,D0,7,1:CM;8:GA;F:NG
+Eritrea,ER,XXXX,XXXX,3:DJ;9:SA;C:SD;E:ET;B:YE
+Estonia,EE,E4,2,6:FI;9:LV;7:RU;E:SE
+Ethiopia,ET,D1,E,3:DJ;ER;6:KE;7:SO;SS;C:SD
+Falkland Islands,FK,A2,4,A:AR
+Faroe Islands,FO,E1,9,A:IS;F:NO;C:GB
+Fiji,FJ,F1,5,9:NZ;3:TO;TV;F:VU;NC;WF
+Finland,FI,E1,6,2:EE;F:NO;7:RU;E:SE
+France,FR,E1,F,3:AD;6:BE;D:DE;1:DE;5:IT;7:LU;B:MC;E:ES;4:CH;C:GB;GG;JE
+French Polynesia,PF,XXXX,XXXX,1:KI;CK;PN
+Gabon,GA,D0,8,1:CM;C:CG;7:GQ
+The Gambia,GM,D1,8,6:CV;7:SN
+Georgia,GE,E4,C,A:AM;B:AZ;7:RU;3:TR;6:UA
+Germany,DE,E0,D;1,A:AT;6:BE;2:CZ;9:DK;F:FR;7:LU;8:NL;8:PL;E:SE;4:CH;C:GB
+Ghana,GH,D1,3,E:BJ;B:BF;C:CI;F:NG;D:TG
+Gibraltar,GI,E1,A,1:MA;E:ES
+Greece,GR,E1,1,9:AL;8:BG;2:CY;F:EG;5:IT;D:LY;3:MK;3:TR
+Greenland,GL,A1,F,C:CA;A:IS;F:NO;SJ
+Grenada,GD,A3,D,C:VC;6:TT
+Guam,GU,XXXX,XXXX,E:FM
+Guatemala,GT,A4,1,6:BZ;C:SV;2:HN;F:MX
+Guernsey,GG,XXXX,XXXX,F:FR;JE
+Guinea,GN,D0,9,C:CI;A:GW;2:LR;5:ML;7:SN;1:SL
+GuineaBissau,GW,D2,A,9:GN;7:SN
+Guyana,GY,A3,F,5:BB;B:BR;8:SR;6:TT;E:VE
+Haiti,HT,A4,D,F:BS;2:CO;9:CU;B:DO;3:JM;E:TC
+Heard Island and McDonald Islands,HM,XXXX,XXXX,
+Honduras,HN,A4,2,6:BZ;2:CO;9:CU;C:SV;1:GT;F:MX;7:NI;7:KY
+Hong Kong,HK,F1,F,
+Hungary,HU,E0,B,A:AT;C:HR;E:RO;D:RS;5:SK;9:SI;6:UA
+Iceland,IS,E2,A,9:FO;F:GL;SJ
+India,IN,F2,5,A:AF;3:BD;2:BT;B:MM;C:CN;C:ID;B:MV;E:NP;4:PK;C:LK;2:TH
+Indonesia,ID,F2,C,1:AU;2:AU;3:AU;4:AU;5:AU;6:AU;7:AU;8:AU;5:IN;F:MY;PW;9:PG;8:PH;A:SG;2:TH;7:VN;CX
+Iran,IR,F1,8,A:AF;A:AM;B:AZ;E:BH;B:IQ;1:KW;6:OM;4:PK;2:QA;9:SA;3:TR;E:TM;D:AE
+Iraq,IQ,E1,B,8:IR;5:JO;1:KW;9:SA;3:TR
+Ireland,IE,E3,2,C:GB
+Isle of Man,IM,XXXX,XXXX,
+Israel,IL,E0,4,2:CY;F:EG;5:JO;A:LB
+Italy,IT,E0,5,9:AL;2:DZ;A:AT;C:HR;F:FR;1:GR;D:LY;C:MT;1:ME;3:SM;9:SI;E:ES;4:CH;7:TN;4:VA
+Jamaica,JM,A3,3,2:CO;9:CU;D:HT;7:KY
+Japan,JP,F2,9,C:CN;D:KP;E:KR;8:PH;7:RU;MP;D:TW
+Jersey,JE,XXXX,XXXX,F:FR;GG
+Jordan,JO,E1,5,F:EG;B:IQ;4:IL;9:SA
+Kazakhstan,KZ,E3,D,C:CN;3:KG;7:RU;E:TM;B:UZ
+Kenya,KE,D2,6,E:ET;7:SO;SS;D:TZ;4:UG
+Kiribati,KI,F1,1,MH;7:NR;TV;CK;PF;TK
+North Korea,KP,F0,D,C:CN;9:JP;E:KR;7:RU
+South Korea,KR,F1,E,C:CN;9:JP;D:KP
+Kuwait,KW,F2,1,8:IR;B:IQ;9:SA
+Kyrgyzstan,KG,E4,3,C:CN;D:KZ;5:TJ;B:UZ
+Laos,LA,F3,1,B:MM;3:KH;C:CN;2:TH;7:VN
+Latvia,LV,E3,9,F:BY;2:EE;C:LT;7:RU;E:SE
+Lebanon,LB,E3,A,2:CY;4:IL
+Lesotho,LS,D3,6,A:ZA
+Liberia,LR,D1,2,C:CI;9:GN;1:SL
+Libya,LY,E1,D,2:DZ;9:TD;F:EG;1:GR;5:IT;C:MT;8:NE;C:SD;7:TN
+Liechtenstein,LI,E2,9,A:AT;4:CH
+Lithuania,LT,E2,C,F:BY;9:LV;8:PL;7:RU;E:SE
+Luxembourg,LU,E1,7,6:BE;F:FR;D:DE;1:DE
+Macau,MO,F2,6,
+Republic of Macedonia,MK,E4,3,9:AL;8:BG;1:GR;D:RS
+Madagascar,MG,D0,4,C:KM;F:FR;3:MZ;B:SC;YT
+Malawi,MW,D0,F,3:MZ;D:TZ;E:ZM
+Malaysia,MY,F0,F,B:BN;C:ID;8:PH;A:SG;2:TH;7:VN
+Maldives,MV,F2,B,5:IN;C:LK;IO
+Mali,ML,D0,5,2:DZ;B:BF;C:CI;9:GN;4:MR;8:NE;7:SN
+Malta,MT,E0,C,5:IT;D:LY
+Marshall Islands,MH,XXXX,XXXX,1:KI;E:FM;7:NR
+Mauritania,MR,D1,4,2:DZ;6:CV;5:ML;1:MA;7:SN;3:EH
+Mauritius,MU,D3,A,F:FR;B:SC
+Mayotte,YT,XXXX,XXXX,C:KM;4:MG
+Mexico,MX,A4,F,6:BZ;9:CU;1:GT;2:HN;1:US;2:US;3:US;4:US;5:US;6:US;7:US;8:US;9:US;A:US;B:US;D:US;E:US
+Federated States of Micronesia,FM,F3,E,MH;PW;9:PG;GU
+Moldova,MD,E4,1,E:RO;6:UA
+Monaco,MC,E2,B,F:FR
+Mongolia,MN,F3,F,C:CN;7:RU
+Montenegro,ME,E3,1,9:AL;F:BA;C:HR;5:IT;D:RS
+Montserrat,MS,A4,5,2:AG;F:FR;A:KN;E:VE
+Morocco,MA,E2,1,2:DZ;8:PT;E:ES;4:MR;3:EH
+Mozambique,MZ,D2,3,C:KM;F:FR;4:MG;F:MW;A:ZA;5:SZ;D:TZ;E:ZM;2:ZW
+Namibia,NA,D1,1,6:AO;B:BW;A:ZA;E:ZM
+Nauru,NR,F1,7,1:KI;MH
+Nepal,NP,F2,E,5:IN;C:CN
+Netherlands,NL,E3,8,6:BE;D:DE;1:DE;A:KN;C:GB;E:VE;1:AI;MF;F:VI
+New Caledonia,NC,XXXX,XXXX,1:AU;2:AU;3:AU;4:AU;5:AU;6:AU;7:AU;8:AU;5:FJ;9:PG;A:SB;F:VU;NF
+New Zealand,NZ,F1,9,1:AU;2:AU;3:AU;4:AU;5:AU;6:AU;7:AU;8:AU;5:FJ;3:TO;NF
+Nicaragua,NI,A3,7,2:CO;8:CR;C:SV;2:HN
+Niger,NE,D2,8,2:DZ;E:BJ;B:BF;9:TD;D:LY;5:ML;F:NG
+Nigeria,NG,D1,F,E:BJ;1:CM;9:TD;7:GQ;3:GH;8:NE
+Niue,NU,XXXX,XXXX,3:TO;AS;CK
+Norfolk Island,NF,XXXX,XXXX,9:NZ;NC
+Northern Mariana Islands,MP,XXXX,XXXX,9:JP
+Norway,NO,E2,F,9:DK;6:FI;A:IS;7:RU;E:SE;C:GB;F:GL;9:FO
+Oman,OM,F1,6,8:IR;4:PK;9:SA;D:AE;B:YE
+Pakistan,PK,F1,4,A:AF;C:CN;5:IN;8:IR;6:OM
+Palau,PW,XXXX,XXXX,C:ID;E:FM;8:PH
+Panama,PA,A3,9,2:CO;8:CR
+Papua New Guinea,PG,F3,9,1:AU;2:AU;3:AU;4:AU;5:AU;6:AU;7:AU;8:AU;C:ID;E:FM;A:SB;NC
+Paraguay,PY,A3,6,A:AR;1:BO;B:BR
+Peru,PE,A4,7,1:BO;B:BR;C:CL;2:CO;3:EC
+Philippines,PH,F2,8,C:CN;C:ID;9:JP;F:MY;PW;7:VN;D:TW
+Pitcairn Islands,PN,XXXX,XXXX,PF
+Poland,PL,E4,8,F:BY;2:CZ;9:DK;D:DE;1:DE;C:LT;7:RU;5:SK;E:SE;6:UA
+Portugal,PT,E0,8,1:MA;E:ES
+Puerto Rico,PR,A3,8,B:DO;E:VE;F:VG
+Qatar,QA,F2,2,E:BH;8:IR;9:SA;D:AE
+Romania,RO,E1,E,8:BG;B:HU;1:MD;D:RS;3:TR;6:UA
+Russia,RU,E0,7,B:AZ;F:BY;C:CN;2:EE;6:FI;C:GE;9:JP;D:KZ;D:KP;9:LV;C:LT;F:MN;F:NO;8:PL;E:SE;3:TR;6:UA;1:US;2:US;3:US;4:US;5:US;6:US;7:US;8:US;9:US;A:US;B:US;D:US;E:US
+Rwanda,RW,D3,5,9:BI;CD;D:TZ;4:UG
+Saint Barthlemy,BL,XXXX,XXXX,2:AG;8:NL;A:KN;SX
+Saint Helena Ascension and Tristan da Cunha,SH,D1,A,
+Saint Kitts and Nevis,KN,A4,A,2:AG;8:NL;E:VE;5:MS;BL
+Saint Lucia,LC,XXXX,XXXX,5:BB;F:FR;C:VC;E:VE
+Saint Martin,MF,XXXX,XXXX,8:NL;1:AI;SX
+Saint Pierre and Miquelon,PM,A6,F,C:CA
+Saint Vincent and the Grenadines,VC,A5,C,5:BB;D:GD;LC;6:TT;E:VE
+Samoa,WS,F2,4,3:TO;AS;TK;WF
+San Marino,SM,E1,3,5:IT
+Saudi Arabia,SA,F0,9,E:BH;F:EG;ER;8:IR;B:IQ;5:JO;1:KW;6:OM;2:QA;C:SD;D:AE;B:YE
+Senegal,SN,D1,7,6:CV;8:GM;9:GN;A:GW;5:ML;4:MR
+Serbia,RS,E2,D,9:AL;F:BA;8:BG;C:HR;B:HU;3:MK;1:ME;E:RO
+Seychelles,SC,A4,B,C:KM;4:MG;A:MU;D:TZ
+Sierra Leone,SL,D2,1,9:GN;2:LR
+Singapore,SG,F2,A,C:ID;F:MY
+Sint Maarten,SX,XXXX,XXXX,BL;MF
+Slovakia,SK,E2,5,A:AT;2:CZ;B:HU;8:PL;6:UA
+Slovenia,SI,E4,9,A:AT;C:HR;5:IT;B:HU
+Solomon Islands,SB,F1,A,1:AU;2:AU;3:AU;4:AU;5:AU;6:AU;7:AU;8:AU;9:PG;F:VU;NC
+Somalia,SO,D2,7,3:DJ;E:ET;6:KE;B:YE
+South Africa,ZA,D0,A,B:BW;6:LS;3:MZ;1:NA;5:SZ;2:ZW
+South Georgia and the South Sandwich Islands,GS,XXXX,XXXX,
+South Sudan,SS,XXXX,XXXX,2:CF;CD;E:ET;6:KE;C:SD;4:UG
+Spain,ES,E2,E,2:DZ;3:AD;F:FR;5:IT;1:MA;8:PT;A:GI;3:EH
+Sri Lanka,LK,F1,C,5:IN;B:MV
+Sudan,SD,D3,C,2:CF;9:TD;F:EG;ER;E:ET;D:LY;9:SA;SS
+Suriname,SR,A4,8,B:BR;F:FR;F:GY
+Svalbard,SJ,XXXX,XXXX,7:RU;F:GL
+Swaziland,SZ,D2,5,3:MZ;A:ZA
+Sweden,SE,E3,E,9:DK;2:EE;6:FI;D:DE;1:DE;9:LV;C:LT;F:NO;8:PL;7:RU
+Switzerland,CH,E1,4,A:AT;F:FR;5:IT;9:LI;D:DE;1:DE
+Taiwan,TW,F1,D,C:CN;9:JP;8:PH
+Tajikistan,TJ,E3,5,A:AF;C:CN;3:KG;B:UZ
+Tanzania,TZ,D1,D,9:BI;C:KM;CD;6:KE;F:MW;3:MZ;5:RW;B:SC;4:UG;E:ZM
+Thailand,TH,F3,2,B:MM;3:KH;5:IN;C:ID;1:LA;F:MY;7:VN
+Togo,TG,D0,D,E:BJ;B:BF;3:GH
+Tokelau,TK,XXXX,XXXX,1:KI;4:WS;AS;CK;WF
+Tonga,TO,F3,3,5:FJ;9:NZ;4:WS;AS;NU;WF
+Trinidad and Tobago,TT,A4,6,5:BB;D:GD;F:GY;E:VE
+Tunisia,TN,E2,7,2:DZ;5:IT;D:LY
+Turkey,TR,E3,3,A:AM;B:AZ;8:BG;2:CY;F:EG;C:GE;1:GR;8:IR;B:IQ;E:RO;7:RU;6:UA
+Turkmenistan,TM,E4,E,A:AF;B:AZ;8:IR;D:KZ;B:UZ
+Turks and Caicos Islands,TC,A3,E,F:BS;B:DO;D:HT
+Tuvalu,TV,XXXX,XXXX,5:FJ;1:KI;WF
+Uganda,UG,D2,4,CD;6:KE;5:RW;SS;D:TZ
+Ukraine,UA,E4,6,F:BY;B:HU;C:GE;1:MD;8:PL;E:RO;7:RU;5:SK;3:TR
+United Arab Emirates,AE,F2,D,8:IR;6:OM;2:QA;9:SA
+United Kingdom,GB,E1,C,6:BE;9:DK;F:FR;D:DE;1:DE;2:IE;8:NL;F:NO;9:FO
+United States,US,A0,1;2;3;4;5;6;7;8;9;A;B;D;E,F:BS;C:CA;9:CU;1:KI;F:MX;7:RU
+United States Virgin Islands,VI,A5,F,8:NL;E:VE;1:AI;F:VG
+Uruguay,UY,A4,9,A:AR;B:BR
+Uzbekistan,UZ,E4,B,A:AF;D:KZ;3:KG;5:TJ;E:TM
+Vanuatu,VU,F2,F,5:FJ;A:SB;NC
+Vatican City,VA,E2,4,5:IT
+Venezuela,VE,A4,E,5:BB;B:BR;2:CO;A:DM;B:DO;F:FR;F:GY;8:NL;A:KN;LC;C:VC;6:TT;3:AW;CW;5:MS;8:PR;F:VI
+Vietnam,VN,F2,7,3:KH;C:CN;C:ID;1:LA;F:MY;8:PH;2:TH
+Wallis and Futuna,WF,XXXX,XXXX,5:FJ;4:WS;3:TO;TV;TK
+Western Sahara,EH,D3,3,2:DZ;4:MR;1:MA;E:ES
+Yemen,YE,F3,B,3:DJ;ER;6:OM;9:SA;7:SO
+Zambia,ZM,D2,E,6:AO;B:BW;CD;F:MW;3:MZ;1:NA;D:TZ;2:ZW
+Zimbabwe,ZW,D2,2,B:BW;3:MZ;A:ZA;E:ZM

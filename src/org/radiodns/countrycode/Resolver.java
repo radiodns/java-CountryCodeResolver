@@ -47,12 +47,12 @@ public class Resolver {
 
 			String nextLine;
 			while ((nextLine = reader.readLine()) != null) {
-				String[] vals = new String[4];
+				String[] vals = new String[5];
 				String[] lineParts = nextLine.split(",");
 				System.arraycopy(lineParts, 0, vals, 0, lineParts.length);
 
-				Country country = new Country(vals[0], vals[1],
-						csvArrayToList(vals[2]), csvArrayToList(vals[3]));
+				Country country = new Country(vals[1], vals[2],
+						csvArrayToList(vals[3]), csvArrayToList(vals[4]));
 				mCountryLookupTable.put(country.getISOCountryCode(), country);
 				for (String countryId : country.getCountryIds()) {
 					mECCLookupTable.put(countryId + country.getECC(), country);
@@ -91,8 +91,8 @@ public class Resolver {
 					"Invalid PI value. Value must be a valid hexadecimal RDS Programme Identifier (PI) code");
 		}
 
-		// enforce lowercase; the lookup table is all lowercase
-		isoCountryCode = isoCountryCode.toLowerCase(Locale.ENGLISH);
+		// upper case
+		isoCountryCode = isoCountryCode.toUpperCase(Locale.ENGLISH);
 
 		// get the Country for the given ISO Country Code
 		Country reportedCountry = mCountryLookupTable.get(isoCountryCode);
@@ -105,23 +105,29 @@ public class Resolver {
 		// take the first nibble of the pi code to get the country Id
 		String piCountryId = String.valueOf(piCode.charAt(0));
 
-		// enforce lowercase; the lookup table is all lowercase
-		piCountryId = piCountryId.toLowerCase(Locale.ENGLISH);
+		// upper case
+		piCountryId = piCountryId.toUpperCase(Locale.ENGLISH);
 
 		if (compareCountryIds(reportedCountry, piCountryId)) {
 			// the country id of the received RDS PI Code matches the country id
 			// of the reported location, return the ISO country code
-			return reportedCountry.getISOCountryCode().toUpperCase(Locale.ENGLISH);
+			return reportedCountry.getISOCountryCode();
 		} else {
 			// the country id & pi code do not match. Check countries adjacent
 			// to the reported country to find a match (resolving
 			// border-proximity issues)
-			for (String countryCode : reportedCountry.getNearbyCountries()) {
-				Country country = mCountryLookupTable.get(countryCode);
-
-				if (compareCountryIds(country, piCountryId)) {
+			for (String nearbyCountry : reportedCountry.getNearbyCountries()) {
+				String[] countryParts = nearbyCountry.split(":");
+				
+				// compare the country id of the received RDS PI Code to the
+				// country id for each of the nearby countries
+				if (piCountryId.equals(countryParts[0])) {
 					// an adjacent country matches, return the ISO country code
-					return country.getISOCountryCode().toUpperCase(Locale.ENGLISH);
+					
+					// TODO: This returns the first occurrence, and such ignores
+					// the possibility of multiple neighbours with the same
+					// country ID
+					return countryParts[1].toUpperCase(Locale.ENGLISH);
 				}
 			}
 
@@ -156,14 +162,14 @@ public class Resolver {
 		// take the first nibble of the pi code to get the country Id
 		String piCountryId = String.valueOf(piCode.charAt(0));
 		
-		// enforce lowercase; the lookup table is all lowercase
-		piCountryId = piCountryId.toLowerCase(Locale.ENGLISH);
-		ecc = ecc.toLowerCase(Locale.ENGLISH);
+		// enforce upper case
+		piCountryId = piCountryId.toUpperCase(Locale.ENGLISH);
+		ecc = ecc.toUpperCase(Locale.ENGLISH);
 
 		// find the country of the given Country ID and ECC combination, and return the Country Code
 		Country country = mECCLookupTable.get(piCountryId + ecc);
 		if (country != null) {
-			return country.getISOCountryCode().toUpperCase(Locale.ENGLISH);
+			return country.getISOCountryCode();
 		} else {
 			throw new ResolutionException(
 					"An ISO Country Code could not be resolved for the given input. No match found in lookup table");

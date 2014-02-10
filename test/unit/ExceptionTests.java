@@ -142,7 +142,7 @@ public class ExceptionTests {
 	@Test(expected = ResolutionException.class)
 	public void testUnadjacentPICode2() throws ResolutionException {
 		Resolver resolver = new Resolver();
-		resolver.resolveCountryCodeFromECC("E1", "A479");
+		resolver.resolveCountryCodeFromECC("E4", "D479");
 	}
 	
 }
