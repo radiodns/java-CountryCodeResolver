@@ -51,6 +51,72 @@ In the above example the radio device has located itself within Switzerland (CH)
 Country ID and ECC data obtained from ETSI TS 101 756 (2009) and IEC:62106/Ed2 (2009).
 ISO Country Codes and adjacent countries data obtained from Wikipedia under the Creative Commons Attribution-ShareAlike License.
 
+Certain countries listed as adjacent to others have been removed from the CSV where deemed too distant to realistically have a chance of receiving a broadcast over the border. These countries are listed below:
+
+| Country            | Adjacent Country Removed     |
+|--------------------|------------------------------|
+| Albania            | Montenegro                   |
+| Algeria            | Italy                        |
+| Australia          | New Zealand                  |
+| Bahamas            | Cuba                         |
+| Bahamas            | Haiti                        |
+| Bahamas            | Turks and Caicos Islands     |
+| Barbados           | France                       |
+| Brazil             | France                       |
+| Cayman Islands     | Colombia                     |
+| Cayman Islands     | Honduras                     |
+| China              | Taiwan                       |
+| China              | South Korea                  |
+| Colombia           | Dominican Republic           |
+| Colombia           | Jamaica                      |
+| Colombia           | Peru                         |
+| Colombia           | Cayman Islands               |
+| Cuba               | Bahamas                      |
+| Cuba               | Mexico                       |
+| Cuba               | United States                |
+| Dominican Republic | Venezuela                    |
+| Honduras           | Cayman Islands               |
+| India              | Thailand                     |
+| India              | Maldives                     |
+| India              | Indonesia                    |
+| Indonesia          | Thailand                     |
+| Indonesia          | India                        |
+| Indonesia          | Vietnam                      |
+| Indonesia          | Philippines                  |
+| Iran               | Bahrain                      |
+| Italy              | Malta                        |
+| Italy              | Montenegro                   |
+| Japan              | North Korea                  |
+| Japan              | Taiwan                       |
+| Libya              | Malta                        |
+| Mexico             | Cuba                         |
+| Mexico             | Honduras                     |
+| Mozambique         | France                       |
+| New Caledonia      | Australia                    |
+| New Caledonia      | Fiji                         |
+| New Zealand        | Australia                    |
+| New Zealand        | Tonga                        |
+| New Zealand        | Fiji                         |
+| Nicaragua          | Colombia                     |
+| Norway             | Faroe Islands                |
+| Philippines        | China                        |
+| Russia             | Japan                        |
+| Russia             | North Korea                  |
+| Russia             | Turkey                       |
+| Spain              | Western Sahara               |
+| Sudan              | Saudi Arabia                 |
+| Sweden             | Latvia                       |
+| Turkmenistan       | Azerbaijan                   |
+| United Kingdom     | Faroe Islands                |
+| United Kingdom     | Norway                       |
+| United States      | Bahamas                      |
+| Venezuela          | Montserrat                   |
+| Venezuela          | Dominican Republic           |
+| Venezuela          | Saint Kitts and Nevis        |
+| Venezuela          | France                       |
+| Venezuela          | United States Virgin Islands |
+
+Also of note are countries with no assigned broadcast country ID or Extended Country Code but which instead inherit them from another country. In these cases the country with country ID & ECC has been added as an adjacent to enable a successful lookup (e.g. Jersey uses the UK's broadcast country ID and ECC and so GB has been added an adjacent of JE).
 
 ### Licence
 
