@@ -18,7 +18,7 @@ package org.radiodns.countrycode;
 
 /**
  * @author Byrion Smith <byrion.smith@thisisglobal.com>
- * @version 0.2
+ * @version 0.3
  */
 public class ResolutionException extends Exception {
 

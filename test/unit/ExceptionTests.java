@@ -22,39 +22,29 @@ import org.radiodns.countrycode.Resolver;
 
 /**
  * @author Byrion Smith <byrion.smith@thisisglobal.com>
- * @version 0.2
+ * @version 0.3
  */
 public class ExceptionTests {
 
-	
 	/*
 	 * Invalid Country Code
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void testInvalidCountryCode1() throws ResolutionException {
 		Resolver resolver = new Resolver();
-		resolver.resolveCountryCodeFromCountryCode(null, "C479");
+		resolver.setIsoCountryCode(null);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testInvalidCountryCode2() throws ResolutionException {
 		Resolver resolver = new Resolver();
-		resolver.resolveCountryCodeFromCountryCode("X", "C479");
+		resolver.setIsoCountryCode("X");
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testInvalidCountryCode3() throws ResolutionException {
 		Resolver resolver = new Resolver();
-		resolver.resolveCountryCodeFromCountryCode("XXX", "C479");
-	}
-	
-	/*
-	 * Country Code not found in lookup table
-	 */
-	@Test(expected = ResolutionException.class)
-	public void testUnknownCountryCode() throws ResolutionException {
-		Resolver resolver = new Resolver();
-		resolver.resolveCountryCodeFromCountryCode("XX", "C479");
+		resolver.setIsoCountryCode("XXX");
 	}
 	
 	/*
@@ -63,42 +53,52 @@ public class ExceptionTests {
 	@Test(expected = IllegalArgumentException.class)
 	public void testInvalidECC1() throws ResolutionException {
 		Resolver resolver = new Resolver();
-		resolver.resolveCountryCodeFromECC(null, "c479");
+		resolver.setExtendedCountryCode(null);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testInvalidECC2() throws ResolutionException {
 		Resolver resolver = new Resolver();
-		resolver.resolveCountryCodeFromECC("", "c479");
-	}
-	
-	@Test(expected = IllegalArgumentException.class)
-	public void testInvalidECC3() throws ResolutionException {
-		Resolver resolver = new Resolver();
-		resolver.resolveCountryCodeFromECC("X", "c479");
-	}
-	
-	@Test(expected = IllegalArgumentException.class)
-	public void testInvalidECC4() throws ResolutionException {
-		Resolver resolver = new Resolver();
-		resolver.resolveCountryCodeFromECC("XX", "c479");
-	}
-	
-	@Test(expected = IllegalArgumentException.class)
-	public void testInvalidECC5() throws ResolutionException {
-		Resolver resolver = new Resolver();
-		resolver.resolveCountryCodeFromECC("XXX", "c479");
+		resolver.setExtendedCountryCode("XX");
 	}
 	
 	/*
-	 * ECC not found in lookup table
+	 * Country Code not found in lookup table
 	 */
 	@Test(expected = ResolutionException.class)
-	public void testUnknownECC() throws ResolutionException {
+	public void testUnknownCountryCode1() throws ResolutionException {
 		Resolver resolver = new Resolver();
-		resolver.resolveCountryCodeFromECC("A0", "c479");
+		resolver.setIsoCountryCode("XX");
+		resolver.setRdsPiCode("C479");
+		resolver.resolveGCC();
 	}
 	
+	@Test(expected = ResolutionException.class)
+	public void testUnknownCountryCode2() throws ResolutionException {
+		Resolver resolver = new Resolver();
+		resolver.setIsoCountryCode("XX");
+		resolver.setDabSId("C479");
+		resolver.resolveGCC();
+	}
+	
+	/*
+	 * ECC/Broadcast Country Code not found in lookup table
+	 */
+	@Test(expected = ResolutionException.class)
+	public void testUnknownECC1() throws ResolutionException {
+		Resolver resolver = new Resolver();
+		resolver.setExtendedCountryCode("AA");
+		resolver.setRdsPiCode("C479");
+		resolver.resolveGCC();
+	}
+	
+	@Test(expected = ResolutionException.class)
+	public void testUnknownECC2() throws ResolutionException {
+		Resolver resolver = new Resolver();
+		resolver.setExtendedCountryCode("AA");
+		resolver.setDabSId("C479");
+		resolver.resolveGCC();
+	}
 	
 	/*
 	 * Invalid PI Code
@@ -106,25 +106,40 @@ public class ExceptionTests {
 	@Test(expected = IllegalArgumentException.class)
 	public void testInvalidPICode1() throws ResolutionException {
 		Resolver resolver = new Resolver();
-		resolver.resolveCountryCodeFromCountryCode("CH", null);
+		resolver.setRdsPiCode(null);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testInvalidPICode2() throws ResolutionException {
 		Resolver resolver = new Resolver();
-		resolver.resolveCountryCodeFromCountryCode("CH", "A");
+		resolver.setRdsPiCode("A");
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testInvalidPICode3() throws ResolutionException {
 		Resolver resolver = new Resolver();
-		resolver.resolveCountryCodeFromCountryCode("CH", "AAAAA");
+		resolver.setRdsPiCode("AAAAA");
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testInvalidPICode4() throws ResolutionException {
 		Resolver resolver = new Resolver();
-		resolver.resolveCountryCodeFromCountryCode("CH", "XXXX");
+		resolver.setRdsPiCode("XXXX");
+	}
+	
+	/*
+	 * Invalid SID
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void testInvalidSIDCode1() throws ResolutionException {
+		Resolver resolver = new Resolver();
+		resolver.setDabSId(null);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testInvalidSIDCode2() throws ResolutionException {
+		Resolver resolver = new Resolver();
+		resolver.setDabSId("AAAAA");
 	}
 
 	/*
@@ -133,16 +148,20 @@ public class ExceptionTests {
 	@Test(expected = ResolutionException.class)
 	public void testUnadjacentPICode1() throws ResolutionException {
 		Resolver resolver = new Resolver();
-		resolver.resolveCountryCodeFromCountryCode("CH", "B479");
+		resolver.setIsoCountryCode("CH");
+		resolver.setRdsPiCode("B479");
+		resolver.resolveGCC();
 	}
-
+	
 	/*
-	 * ECC and PI Code combination which doesn't resolve a country code
-	 */
+	 * Country Code and SID Code combination which doesn't resolve a country code
+	 */	
 	@Test(expected = ResolutionException.class)
-	public void testUnadjacentPICode2() throws ResolutionException {
+	public void testUnadjacentSIDCode1() throws ResolutionException {
 		Resolver resolver = new Resolver();
-		resolver.resolveCountryCodeFromECC("E1", "A479");
+		resolver.setIsoCountryCode("CH");
+		resolver.setDabSId("B479");
+		resolver.resolveGCC();
 	}
 	
 }

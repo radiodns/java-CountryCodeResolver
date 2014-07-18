@@ -16,15 +16,19 @@
 
 package unit;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Test;
 import org.radiodns.countrycode.ResolutionException;
 import org.radiodns.countrycode.Resolver;
+import org.radiodns.countrycode.Result;
 
 /**
  * @author Byrion Smith <byrion.smith@thisisglobal.com>
- * @version 0.2
+ * @version 0.3
  */
 public class ResolutionTests {
 
@@ -32,73 +36,138 @@ public class ResolutionTests {
 	 * Tests where the given PI Code matches the Country Code
 	 */
 	@Test
-	public void testCorrectCountryCode1() throws ResolutionException {
+	public void testCorrectCountryCodeWithPI1() throws ResolutionException {
+		List<Result> expectedResult = new ArrayList<Result>(); 
+		expectedResult.add(new Result("4", "E1", "CH"));
+		
 		Resolver resolver = new Resolver();
-		assertEquals("CH + 4479 must be CH", "CH",
-				resolver.resolveCountryCodeFromCountryCode("CH", "4479"));
+		resolver.setIsoCountryCode("CH");
+		resolver.setRdsPiCode("4479");
+		List<Result> actualResult = resolver.resolveGCC();
+		assertEquals("CH + 4479 must return one result of 4e1", expectedResult, actualResult);
 	}
 
 	@Test
-	public void testCorrectCountryCode2() throws ResolutionException {
+	public void testCorrectCountryCodeWithPI2() throws ResolutionException {
+		List<Result> expectedResult = new ArrayList<Result>(); 
+		expectedResult.add(new Result("C", "E1", "GB"));
+		
 		Resolver resolver = new Resolver();
-		assertEquals("GB + C479 must be GB", "GB",
-				resolver.resolveCountryCodeFromCountryCode("GB", "C479"));
+		resolver.setIsoCountryCode("GB");
+		resolver.setRdsPiCode("C479");
+		List<Result> actualResult = resolver.resolveGCC();
+		assertEquals("GB + C479 must return one result of ce1", expectedResult, actualResult);
 	}
 
 	@Test
-	public void testCorrectCountryCode3() throws ResolutionException {
+	public void testCorrectCountryCodeWithPI3() throws ResolutionException {
+		List<Result> expectedResult = new ArrayList<Result>(); 
+		expectedResult.add(new Result("A", "E0", "AT"));
+		
 		Resolver resolver = new Resolver();
-		assertEquals("KR + E479 must be KR", "KR",
-				resolver.resolveCountryCodeFromCountryCode("KR", "E479"));
+		resolver.setIsoCountryCode("AT");
+		resolver.setRdsPiCode("A479");
+		List<Result> actualResult = resolver.resolveGCC();
+		assertEquals("AT + 5479 must return one result of ae0", expectedResult, actualResult);
+	}
+	
+	/*
+	 * Tests where the given SID Code matches the Country Code
+	 */
+	@Test
+	public void testCorrectCountryCodeWithSID1() throws ResolutionException {
+		List<Result> expectedResult = new ArrayList<Result>(); 
+		expectedResult.add(new Result("C", "E1", "GB"));
+		
+		Resolver resolver = new Resolver();
+		resolver.setIsoCountryCode("GB");
+		resolver.setDabSId("C479");
+		List<Result> actualResult = resolver.resolveGCC();
+		assertEquals("GB + C479 must return one result of ce1", expectedResult, actualResult);
 	}
 
 	/*
 	 * Tests where the given PI Code doesn't match the Country Code but does of
-	 * a country adjacent to it
+	 * a country or countries adjacent to it
 	 */
 	@Test
-	public void testAdjacentCountryCode1() throws ResolutionException {
+	public void testAdjacentCountryCodeWithPI1() throws ResolutionException {
+		List<Result> expectedResult = new ArrayList<Result>(); 
+		expectedResult.add(new Result("D", "E0", "DE"));
+		
 		Resolver resolver = new Resolver();
-		assertEquals("CH + D479 must be DE", "DE",
-				resolver.resolveCountryCodeFromCountryCode("CH", "D479"));
+		resolver.setIsoCountryCode("ch");
+		resolver.setRdsPiCode("d479");
+		List<Result> actualResult = resolver.resolveGCC();		
+		assertEquals("CH + D479 must return one result of de0", expectedResult, actualResult);
 	}
 
 	@Test
-	public void testAdjacentCountryCode2() throws ResolutionException {
+	public void testAdjacentCountryCodeWithPI2() throws ResolutionException {
+		List<Result> expectedResult = new ArrayList<Result>(); 
+		expectedResult.add(new Result("2", "E3", "IE"));
+		
 		Resolver resolver = new Resolver();
-		assertEquals("GB + 2479 must be IE", "IE",
-				resolver.resolveCountryCodeFromCountryCode("GB", "2479"));
+		resolver.setIsoCountryCode("GB");
+		resolver.setRdsPiCode("2479");
+		List<Result> actualResult = resolver.resolveGCC();	
+		assertEquals("GB + 2479 must return one result of ie3", expectedResult, actualResult);
 	}
 
 	@Test
-	public void testAdjacentCountryCode3() throws ResolutionException {
+	public void testAdjacentCountryCodeWithPI3() throws ResolutionException {
+		List<Result> expectedResult = new ArrayList<Result>(); 
+		expectedResult.add(new Result("5", "E0", "IT"));
+		expectedResult.add(new Result("5", "E2", "SK"));
+		
 		Resolver resolver = new Resolver();
-		assertEquals("KP + E479 must be KR", "KR",
-				resolver.resolveCountryCodeFromCountryCode("KP", "E479"));
+		resolver.setIsoCountryCode("AT");
+		resolver.setRdsPiCode("5479");
+		List<Result> actualResult = resolver.resolveGCC();	
+		assertEquals("AT + 5479 must return two results of 5e0 & 5e2", expectedResult, actualResult);
 	}
 	
 	/*
-	 * Tests where the given PI Code matches the ECC
+	 * Tests where the given SID Code doesn't match the Country Code but does of
+	 * a country or countries adjacent to it
 	 */
 	@Test
-	public void testCorrectECC1() throws ResolutionException {
+	public void testAdjacentCountryCodeWithSID1() throws ResolutionException {
+		List<Result> expectedResult = new ArrayList<Result>(); 
+		expectedResult.add(new Result("D", "E0", "DE"));
+		
 		Resolver resolver = new Resolver();
-		assertEquals("E1 + 4479 must be CH", "CH",
-				resolver.resolveCountryCodeFromECC("E1", "4479"));
+		resolver.setIsoCountryCode("CH");
+		resolver.setDabSId("D479");
+		List<Result> actualResult = resolver.resolveGCC();
+		assertEquals("CH + D479 must return one result of de0", expectedResult, actualResult);
 	}
-
+	
+	/*
+	 * Tests resolving a GCC with an ECC
+	 */
 	@Test
-	public void testCorrectECC2() throws ResolutionException {
+	public void testECCWithPI1() throws ResolutionException {
+		List<Result> expectedResult = new ArrayList<Result>(); 
+		expectedResult.add(new Result("D", "E0", "DE"));
+		
 		Resolver resolver = new Resolver();
-		assertEquals("E1 + C479 must be GB", "GB",
-				resolver.resolveCountryCodeFromECC("E1", "C479"));
-	}
-
+		resolver.setExtendedCountryCode("E0");
+		resolver.setRdsPiCode("D479");
+		List<Result> actualResult = resolver.resolveGCC();
+		assertEquals("E0 + D479 must return one result of de0", expectedResult, actualResult);
+	}	
+	
 	@Test
-	public void testCorrectECC3() throws ResolutionException {
+	public void testECCWithSID1() throws ResolutionException {
+		List<Result> expectedResult = new ArrayList<Result>(); 
+		expectedResult.add(new Result("D", "E0", "DE"));
+		
 		Resolver resolver = new Resolver();
-		assertEquals("F1 + E479 must be KR", "KR",
-				resolver.resolveCountryCodeFromECC("F1", "E479"));
+		resolver.setExtendedCountryCode("E0");
+		resolver.setDabSId("D479");
+		List<Result> actualResult = resolver.resolveGCC();
+		assertEquals("E0 + D479 must return one result of de0", expectedResult, actualResult);
 	}
 
 }

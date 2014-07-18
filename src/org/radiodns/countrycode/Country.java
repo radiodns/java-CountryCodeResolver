@@ -20,7 +20,7 @@ import java.util.List;
 
 /**
  * @author Byrion Smith <byrion.smith@thisisglobal.com>
- * @version 0.2
+ * @version 0.3
  */
 public class Country {
 	private String mISOCountryCode;
@@ -28,11 +28,11 @@ public class Country {
 	private List<String> mCountryIds;
 	private List<String> mNearbyCountries;
 
-	public Country(String isoCountryCode, String ecc, List<String> countryId,
+	public Country(String isoCountryCode, String ecc, List<String> countryIds,
 			List<String> nearbyCountries) {
 		mISOCountryCode = isoCountryCode;
 		mECC = ecc;
-		mCountryIds = countryId;
+		mCountryIds = countryIds;
 		mNearbyCountries = nearbyCountries;
 	}
 
@@ -43,7 +43,7 @@ public class Country {
 	public String getECC() {
 		return mECC;
 	}
-
+	
 	public List<String> getCountryIds() {
 		return mCountryIds;
 	}

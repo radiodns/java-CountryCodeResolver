@@ -1,13 +1,13 @@
 java-CountryCodeResolver
 ================
 
-Version 0.2 Beta
+Version 0.3 Beta
 
 ### Introduction
 
-This library helps with RadioDNS lookups by confirming the ISO 3166 two-letter country code required to identify an FM radio service being consumed.
+This library helps with RadioDNS lookups by resolving the Global Country Code (GCC) value required to identify a radio service being consumed.
 
-It is common for FM broadcasts to lack RDS ECC, a field which would otherwise confirm the country of origin of the broadcast. Other information such as the physical location of the device could be used on its own, however that doesn't consider the scenario of being on or close to a country border. This library enables the accurate resolution of the country of origin by taking as inputs the RDS PI and the two-letter country code of the physical location of the radio device. It also enables the resolution of Country Code for a given RDS ECC and RDS PI code combination.
+It is common for FM broadcasts to lack RDS ECC, a field which would otherwise confirm the country of origin of the broadcast. Other information such as the physical location of the device could be used on its own, however that doesn't consider the scenario of being on or close to a country border. This library enables the accurate resolution of the country of origin by taking as inputs the RDS PI or DAB SID and the two-letter country code of the physical location of the radio device or Extended Country Code (ECC).
 
 This is beta code which requires further work.
 
@@ -15,35 +15,53 @@ For more information about RadioDNS, please see the official documentation: [htt
  
 
 ### Getting Started
-The library has two methods.
+Using data received by the device, the relevant values must first be set, before then calling `resolveGCC()`.
 
-	String resolveCountryCodeFromCountryCode(String isoCountryCode, String piCode) throws ResolutionException
+Methods available for setting data are as follows:
+
+	void setIsoCountryCode(String isoCountryCode)
 	
-	String resolveCountryCodeFromECC(String ecc, String piCode) throws ResolutionException
+	void setExtendedCountryCode(String ecc)
 	
-The three possible arguments are:
+	void setRdsPiCode(String rdsPi)
+	
+	void setDabSId(String dabSId)
+
+To complete the resolution the following method should be called.
+
+	List<Result> resolveGCC()
+	
+The four values which can be set are:
 
 1. An ISO 3166 two-letter country code representing the country the radio device is physically located within. This could be obtained using GPS or cell-triangulation etc.
-2. The RDS PI Code received from the FM broadcast.
-3. The RDS Extended Country Code (ECC) value received from the FM broadcast.
+2. The ECC received from broadcast.
+3. The RDS PI Code received from FM broadcast.
+4. The DAB SID received from DAB broadcast. 
 
-The method will return an ISO 3166 two-letter country code for the country matching the Country Code/RDS ECC and RDS PI Code combination.
+A combination of the first or second, and third or forth values must be set for a successful resolution.
+
+The method returns a list of Result objects each of which include the Global Country Code (GCC) for the country matching the Country Code and RDS PI Code / DAB SID combination. In most cases the list will contain only one result, however more may be returned in some cases.
 
 Example:
 
 	Resolver resolver = new Resolver();
 		
 		try {
-
-			String countryCode = resolver.resolveCountryCodeFromCountryCode("CH", "D479");		
-
-			System.out.println("Country Code: " + countryCode);
+		
+			Resolver resolver = new Resolver();
+			resolver.setIsoCountryCode("CH");
+			resolver.setRdsPiCode("4479");
 			
+			List<Result> resultList = resolver.resolveGCC();
+			Result result = resultList.get(0);
+			
+			System.out.println("GCC: " + result.gcc);
+
 		} catch (ResolutionException e) {
 			e.printStackTrace();
 		}
 
-In the above example the radio device has located itself within Switzerland (CH), but the first nibble of the received RDS PI is not Switzerland's Country ID of '4'. Here the library would return a country code of 'DE', having identified the FM broadcast as a German station and assuming the radio device must be near the border. 
+In the above example the radio device has located itself within Switzerland (CH), but the first nibble of the received RDS PI is not Switzerland's Country ID of '4'. Here the library would return a Global Country Code of 'de0', having identified the FM broadcast as a German station and assuming the radio device must be near the border. 
 
 
 ### Data Sources
@@ -51,6 +69,72 @@ In the above example the radio device has located itself within Switzerland (CH)
 Country ID and ECC data obtained from ETSI TS 101 756 (2009) and IEC:62106/Ed2 (2009).
 ISO Country Codes and adjacent countries data obtained from Wikipedia under the Creative Commons Attribution-ShareAlike License.
 
+Certain countries listed as adjacent to others have been removed from the CSV where deemed too distant to realistically have a chance of receiving a broadcast over the border. These countries are listed below:
+
+| Country            | Adjacent Country Removed     |
+|--------------------|------------------------------|
+| Albania            | Montenegro                   |
+| Algeria            | Italy                        |
+| Australia          | New Zealand                  |
+| Bahamas            | Cuba                         |
+| Bahamas            | Haiti                        |
+| Bahamas            | Turks and Caicos Islands     |
+| Barbados           | France                       |
+| Brazil             | France                       |
+| Cayman Islands     | Colombia                     |
+| Cayman Islands     | Honduras                     |
+| China              | Taiwan                       |
+| China              | South Korea                  |
+| Colombia           | Dominican Republic           |
+| Colombia           | Jamaica                      |
+| Colombia           | Peru                         |
+| Colombia           | Cayman Islands               |
+| Cuba               | Bahamas                      |
+| Cuba               | Mexico                       |
+| Cuba               | United States                |
+| Dominican Republic | Venezuela                    |
+| Honduras           | Cayman Islands               |
+| India              | Thailand                     |
+| India              | Maldives                     |
+| India              | Indonesia                    |
+| Indonesia          | Thailand                     |
+| Indonesia          | India                        |
+| Indonesia          | Vietnam                      |
+| Indonesia          | Philippines                  |
+| Iran               | Bahrain                      |
+| Italy              | Malta                        |
+| Italy              | Montenegro                   |
+| Japan              | North Korea                  |
+| Japan              | Taiwan                       |
+| Libya              | Malta                        |
+| Mexico             | Cuba                         |
+| Mexico             | Honduras                     |
+| Mozambique         | France                       |
+| New Caledonia      | Australia                    |
+| New Caledonia      | Fiji                         |
+| New Zealand        | Australia                    |
+| New Zealand        | Tonga                        |
+| New Zealand        | Fiji                         |
+| Nicaragua          | Colombia                     |
+| Norway             | Faroe Islands                |
+| Philippines        | China                        |
+| Russia             | Japan                        |
+| Russia             | North Korea                  |
+| Russia             | Turkey                       |
+| Spain              | Western Sahara               |
+| Sudan              | Saudi Arabia                 |
+| Sweden             | Latvia                       |
+| Turkmenistan       | Azerbaijan                   |
+| United Kingdom     | Faroe Islands                |
+| United Kingdom     | Norway                       |
+| United States      | Bahamas                      |
+| Venezuela          | Montserrat                   |
+| Venezuela          | Dominican Republic           |
+| Venezuela          | Saint Kitts and Nevis        |
+| Venezuela          | France                       |
+| Venezuela          | United States Virgin Islands |
+
+Also of note are countries with no assigned broadcast country ID or Extended Country Code but which instead inherit them from another country. In these cases the country with country ID & ECC has been added as an adjacent to enable a successful lookup (e.g. Jersey uses the UK's broadcast country ID and ECC and so GB has been added an adjacent of JE).
 
 ### Licence
 

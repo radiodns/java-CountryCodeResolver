@@ -22,7 +22,7 @@ import org.junit.runners.Suite.SuiteClasses;
 
 /**
  * @author Byrion Smith <byrion.smith@thisisglobal.com>
- * @version 0.2
+ * @version 0.3
  */
 @RunWith(Suite.class)
 @SuiteClasses({ ExceptionTests.class, ResolutionTests.class })

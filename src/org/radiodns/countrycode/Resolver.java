@@ -28,16 +28,21 @@ import java.util.Locale;
 import java.util.Map;
 
 /**
- * This class enables the resolution of the correct ISO Country Code for a radio
- * service, required to discover RadioDNS services.
+ * This class enables the resolution of the Global Country Code (GCC) for a
+ * radio service, useful in discovering RadioDNS services.
  * 
  * @author Byrion Smith <byrion.smith@thisisglobal.com>
- * @version 0.2
+ * @version 0.3
  */
 public class Resolver {
-
-	Map<String, Country> mCountryLookupTable = new HashMap<String, Country>();
-	Map<String, Country> mECCLookupTable = new HashMap<String, Country>();
+	
+	private Map<String, Country> mCountryLookupTable = new HashMap<String, Country>();
+	private Map<String, Country> mGCCLookupTable = new HashMap<String, Country>();
+	
+	private String mIsoCountryCode = null;
+	private String mEcc = null;
+	private String mDabSId = null;
+	private String mRdsPi = null;
 
 	public Resolver() {
 		// parse countries csv table
@@ -47,17 +52,18 @@ public class Resolver {
 
 			String nextLine;
 			while ((nextLine = reader.readLine()) != null) {
-				String[] vals = new String[4];
+				String[] vals = new String[5];
 				String[] lineParts = nextLine.split(",");
 				System.arraycopy(lineParts, 0, vals, 0, lineParts.length);
 
-				Country country = new Country(vals[0], vals[1],
-						csvArrayToList(vals[2]), csvArrayToList(vals[3]));
+				Country country = new Country(vals[1], vals[2],
+						csvArrayToList(vals[3]), csvArrayToList(vals[4]));
+				// initialise a hashmap keyed on ISO Country Code
 				mCountryLookupTable.put(country.getISOCountryCode(), country);
+				// initialise a hashmap keyed on a country's GCCs
 				for (String countryId : country.getCountryIds()) {
-					mECCLookupTable.put(countryId + country.getECC(), country);
+					mGCCLookupTable.put(countryId + country.getECC(), country);
 				}
-				
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -67,18 +73,139 @@ public class Resolver {
 	}
 	
 	/**
-	 * Resolve the correct ISO 3166 two-letter Country Code based on the country
-	 * code of the listener's physical location and the received RDS PI Code
-	 * from an FM broadcast. Ensures the Country Code is correct in border
-	 * areas.
+	 * Set the ISO Country Code representing the current physical location of
+	 * the device
 	 * 
 	 * @param isoCountryCode 	ISO 3166 two-letter country code
-	 * @param piCode 			RDS PI Code
-	 * @return					ISO 3166 two-letter country code
+	 */
+	public void setIsoCountryCode(String isoCountryCode) {
+		// input validation
+		if (isoCountryCode == null || !isoCountryCode.matches("(?i)^[A-Z]{2}$")) {
+			throw new IllegalArgumentException(
+					"Invalid country code. Must be an ISO 3166-1 alpha-2 country code");
+		}
+		mEcc = null;
+		mIsoCountryCode = isoCountryCode;
+	}
+
+	/**
+	 * Set the Extended Country Code (ECC) received from broadcast
+	 * 
+	 * @param ecc	Extended Country Code (ECC)
+	 */
+	public void setExtendedCountryCode(String ecc) {
+		// input validation
+		if (ecc == null || !ecc.matches("(?i)^[0-9A-F]{2}$")) {
+			throw new IllegalArgumentException(
+					"Invalid ECC value. Value must be a valid hexadecimal Extended Country Code (ECC)");
+		}
+		mEcc = ecc;
+		mIsoCountryCode = null;
+	}
+	
+	/**
+	 * Set the RDS Programme Identification (PI) Code obtained from an FM broadcast
+	 * 
+	 * @param rdsPi RDS Programme Identification (PI) Code
+	 */
+	public void setRdsPiCode(String rdsPi) {
+		// input validation
+		if (rdsPi == null || !rdsPi.matches("(?i)^[0-9A-F]{4}$")) {
+			throw new IllegalArgumentException(
+					"Invalid PI value. Value must be a valid hexadecimal string RDS Programme Identification (PI) Code");
+		}
+		mRdsPi = rdsPi;
+		mDabSId = null;
+	}
+	
+	/**
+	 * Set the DAB SId obtained from a DAB broadcast
+	 * 
+	 * @param dabSId DAB SId
+	 */
+	public void setDabSId(String dabSId) {
+		// input validation
+		if (dabSId == null || !dabSId.matches("(?i)^[0-9A-F]{4}$|^[0-9A-F]{8}$")) {
+			throw new IllegalArgumentException(
+					"Invalid Service Identifier (SId) value. Must be a valid 4 or 8-character hexadecimal string");
+		}
+		mRdsPi = null;
+		mDabSId = dabSId;
+	}
+	
+	/**
+	 * Resolve the correct Global Country Code (GCC) based on the inputs
+	 * available to the device. Ensures the Country Code is correct in border
+	 * areas.
+	 * 
+	 * @return List<Result> Containing Global Country Code (GCC) of matching
+	 *         countries
 	 * @throws ResolutionException
 	 */
-	public String resolveCountryCodeFromCountryCode(String isoCountryCode, String piCode)
-			throws ResolutionException {
+	public List<Result> resolveGCC() throws ResolutionException {
+		String broadcastCountryId = null;
+		// select the broadcast country ID from either the RDS PI or DAB SId values
+		if (mRdsPi != null) {
+			broadcastCountryId = String.valueOf(mRdsPi.charAt(0));
+		} else if (mDabSId != null) {
+			broadcastCountryId = String.valueOf(mDabSId.charAt(0));
+		} else {
+			throw new IllegalStateException(
+					"RDS Programme Identification (PI) OR Service Identifier (SId) must be set before attempting to resolve");
+		}
+		
+		// construct and return a list of results
+		if (mIsoCountryCode != null) {
+			return resolveGCCWithCountryCode(mIsoCountryCode, broadcastCountryId);
+		} else if (mEcc != null) {
+			return resolveGCCWithECC(mEcc, broadcastCountryId);
+		} else {
+			throw new IllegalStateException(
+					"ISO Country Code OR Extended Country Code (ECC) value must be set before attempting to resolve");
+		}
+	}
+
+	/**
+	 * Find and return the Global Country Code (GCC) for the given Extended
+	 * Country Code (ECC) and Broadcast Country Code
+	 * 
+	 * @param ecc 	 				Extended Country Code (ECC)
+	 * @param broadcastCountryCode 	Country ID (first nibble of RDS PI Code/DAB SId)
+	 * @return Result 				Containing Global Country Code (GCC) of matching country
+	 * @throws ResolutionException
+	 */
+	private List<Result> resolveGCCWithECC(String ecc, String broadcastCountryCode) throws ResolutionException {
+		// input validation
+		if (ecc == null || !ecc.matches("(?i)^[0-9A-F]{2}$")) {
+			throw new IllegalArgumentException(
+					"Invalid ECC value. Value must be a valid hexadecimal Extended Country Code (ECC)");
+		}
+		
+		// upper case for hashmap
+		ecc = ecc.toUpperCase(Locale.ENGLISH);
+		broadcastCountryCode = broadcastCountryCode.toUpperCase(Locale.ENGLISH);
+		
+		Country country = mGCCLookupTable.get(broadcastCountryCode + ecc);
+		if (country == null) {
+			throw new ResolutionException(
+					"A Global Country Code (GCC) could not be resolved for the given input. No match found in lookup table");
+		}
+		List<Result> resultList = new ArrayList<Result>();
+		resultList.add(new Result(broadcastCountryCode, ecc, country.getISOCountryCode()));
+		return resultList;
+	}
+	
+	/**
+	 * Find and return the Global Country Code (GCC) results for the given Extended
+	 * Country Code (ECC) and Broadcast Country Code
+	 * 
+	 * @param country 				Country
+	 * @param broadcastCountryCode 	Country ID (first nibble of RDS PI Code/DAB SId)
+	 * @return List<Result> 	Containing Global Country Code (GCC) of matching countries
+	 * @throws ResolutionException
+	 */
+	private List<Result> resolveGCCWithCountryCode(String isoCountryCode,
+			String broadcastCountryCode) throws ResolutionException {
 
 		// input validation
 		if (isoCountryCode == null || !isoCountryCode.matches("(?i)^[A-Z]{2}$")) {
@@ -86,96 +213,59 @@ public class Resolver {
 					"Invalid country code. Must be an ISO 3166-1 alpha-2 country code");
 		}
 
-		if (piCode == null || !piCode.matches("(?i)^[0-9A-F]{4}$")) {
-			throw new IllegalArgumentException(
-					"Invalid PI value. Value must be a valid hexadecimal RDS Programme Identifier (PI) code");
-		}
-
-		// enforce lowercase; the lookup table is all lowercase
-		isoCountryCode = isoCountryCode.toLowerCase(Locale.ENGLISH);
+		// upper case
+		isoCountryCode = isoCountryCode.toUpperCase(Locale.ENGLISH);
 
 		// get the Country for the given ISO Country Code
 		Country reportedCountry = mCountryLookupTable.get(isoCountryCode);
-		
+
 		if (reportedCountry == null) {
 			throw new ResolutionException(
 					"The supplied ISO Country Code is not recognised");
 		}
 
-		// take the first nibble of the pi code to get the country Id
-		String piCountryId = String.valueOf(piCode.charAt(0));
+		// upper case
+		broadcastCountryCode = broadcastCountryCode.toUpperCase(Locale.ENGLISH);
 
-		// enforce lowercase; the lookup table is all lowercase
-		piCountryId = piCountryId.toLowerCase(Locale.ENGLISH);
+		List<Result> resultList = new ArrayList<Result>();
 
-		if (compareCountryIds(reportedCountry, piCountryId)) {
+		if (compareCountryIds(reportedCountry, broadcastCountryCode)) {
 			// the country id of the received RDS PI Code matches the country id
 			// of the reported location, return the ISO country code
-			return reportedCountry.getISOCountryCode().toUpperCase(Locale.ENGLISH);
+			Result result = new Result(broadcastCountryCode, reportedCountry.getECC(), reportedCountry.getISOCountryCode());
+			resultList.add(result);
 		} else {
 			// the country id & pi code do not match. Check countries adjacent
 			// to the reported country to find a match (resolving
 			// border-proximity issues)
-			for (String countryCode : reportedCountry.getNearbyCountries()) {
-				Country country = mCountryLookupTable.get(countryCode);
+			for (String nearbyCountry : reportedCountry.getNearbyCountries()) {
+				String[] countryParts = nearbyCountry.split(":");
 
-				if (compareCountryIds(country, piCountryId)) {
-					// an adjacent country matches, return the ISO country code
-					return country.getISOCountryCode().toUpperCase(Locale.ENGLISH);
+				// compare the country id of the received broadcast country code
+				// to the country id for each of the nearby countries
+				if (broadcastCountryCode.equals(countryParts[0])) {
+					// an adjacent country matches, add to result list
+					Result result = new Result(countryParts[0], mCountryLookupTable.get(countryParts[1]).getECC(), countryParts[1]);
+					resultList.add(result);
 				}
 			}
 
-			throw new ResolutionException(
-					"An ISO Country Code could not be resolved for the given input. No match found in lookup table");
 		}
-	}
-	
-	/**
-	 * Resolve the ISO 3166 two-letter Country Code for the given combination of
-	 * RDS ECC and RDS PI code
-	 * 
-	 * @param ecc			 	RDS ECC
-	 * @param piCode 			RDS PI Code
-	 * @return					ISO 3166 two-letter country code
-	 * @throws ResolutionException
-	 */
-	public String resolveCountryCodeFromECC(String ecc, String piCode)
-			throws ResolutionException {
 		
-		// input validation
-		if (ecc == null || !ecc.matches("(?i)^[0-9A-F]{2}$")) {
-			throw new IllegalArgumentException(
-					"Invalid ECC value. Value must be a valid hexadecimal RDS Extended Country Code (ECC)");
+		if (resultList.size() == 0) {
+			throw new ResolutionException(
+					"A Global Country Code (GCC) could not be resolved for the given input. No match found in lookup table");			
 		}
 
-		if (piCode == null || !piCode.matches("(?i)^[0-9A-F]{4}$")) {
-			throw new IllegalArgumentException(
-					"Invalid PI value. Value must be a valid hexadecimal RDS Programme Identifier (PI) code");
-		}
-		
-		// take the first nibble of the pi code to get the country Id
-		String piCountryId = String.valueOf(piCode.charAt(0));
-		
-		// enforce lowercase; the lookup table is all lowercase
-		piCountryId = piCountryId.toLowerCase(Locale.ENGLISH);
-		ecc = ecc.toLowerCase(Locale.ENGLISH);
-
-		// find the country of the given Country ID and ECC combination, and return the Country Code
-		Country country = mECCLookupTable.get(piCountryId + ecc);
-		if (country != null) {
-			return country.getISOCountryCode().toUpperCase(Locale.ENGLISH);
-		} else {
-			throw new ResolutionException(
-					"An ISO Country Code could not be resolved for the given input. No match found in lookup table");
-		}
+		return resultList;
 	}
 	
 	/**
 	 * Compare the Country IDs of the given country with the supplied country ID
 	 * 
-	 * @param country		Country
-	 * @param countryId 	Country ID (first nibble of RDS PI Code)
-	 * @return
+	 * @param country 		Country
+	 * @param countryId 	Country ID (first nibble of RDS PI Code/DAB SId)
+	 * @return boolean
 	 */
 	private boolean compareCountryIds(Country country, String countryId) {
 		for (String id : country.getCountryIds()) {
@@ -185,12 +275,12 @@ public class Resolver {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Convert a semi-colon delimited list String into a List
 	 * 
-	 * @param array		Semi-colon delimited list String
-	 * @return			List of values
+	 * @param array 	Semi-colon delimited list String
+	 * @return List of values
 	 */
 	private List<String> csvArrayToList(String array) {
 		List<String> result = new ArrayList<String>();
