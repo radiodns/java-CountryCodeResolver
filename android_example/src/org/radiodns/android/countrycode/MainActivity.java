@@ -20,9 +20,9 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-import org.radiodns.android.countrycode.R;
 import org.radiodns.countrycode.ResolutionException;
 import org.radiodns.countrycode.Resolver;
+import org.radiodns.countrycode.Result;
 
 import android.app.Activity;
 import android.content.Context;
@@ -129,13 +129,17 @@ public class MainActivity extends Activity {
 				EditText edtCountryCode = (EditText) findViewById(R.id.edtCountryCode);
 				String countryCode = edtCountryCode.getText().toString();
 
-				Resolver resolver = new Resolver();				
-				String resolvedCC = resolver.resolveCountryCodeFromCountryCode(countryCode, rdsPi);
-
-				Log.d(TAG, String.format("CountryCode: %s (%s, %s)", resolvedCC, countryCode,
+				Resolver resolver = new Resolver();		
+				resolver.setIsoCountryCode(countryCode);
+				resolver.setRdsPiCode(rdsPi);
+				
+				List<Result> resultList = resolver.resolveGCC();
+		        Result result = resultList.get(0);
+				
+				Log.d(TAG, String.format("GCC: %s (%s, %s)", result.gcc, countryCode,
 						rdsPi));
 
-				txtGCC.setText(String.format("%s (%s, %s)", resolvedCC, countryCode,
+				txtGCC.setText(String.format("GCC: %s (%s, %s)", result.gcc, countryCode,
 						rdsPi));
 
 			} catch (ResolutionException e) {
