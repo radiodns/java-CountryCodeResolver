@@ -15,7 +15,7 @@ For more information about RadioDNS, please see the official documentation: [htt
  
 
 ### Getting Started
-Using data received by the device, the relevant values must first be set, before then calling `resolveGCC()`.
+Using data received by the device, the relevant values must first be set on an instance of the `Resolver` class, before then calling `resolveGCC()`.
 
 Methods available for setting data are as follows:
 
@@ -33,14 +33,16 @@ To complete the resolution the following method should be called.
 	
 The four values which can be set are:
 
-1. An ISO 3166 two-letter country code representing the country the radio device is physically located within. This could be obtained using GPS or cell-triangulation etc.
-2. The ECC received from broadcast.
-3. The RDS PI Code received from FM broadcast.
-4. The DAB SID received from DAB broadcast. 
+1. An ISO 3166 two-letter country code representing the country the radio device is physically located within. This could be obtained using GPS or cell-triangulation etc (2 character string)
+2. The ECC received from broadcast (2 character hexadecimal string)
+3. The RDS PI Code received from FM broadcast (4 character hexadecimal string)
+4. The DAB SID received from DAB broadcast (4 or 8 character hexadecimal string) 
 
-A combination of the first or second, and third or forth values must be set for a successful resolution. Alternatively if a 32-bit (8 character hexadecimal) DAB SId is provided an ECC value does not need to be set separately.
+If a 32-bit (8 character hexadecimal) DAB SId is provided it is the only value which needs to be set.
 
-The method returns a list of Result objects each of which include the Global Country Code (GCC) for the country matching the Country Code and RDS PI Code / DAB SID combination. In most cases the list will contain only one result, however more may be returned in some cases.
+In all other cases a combination of the first or second values, and third or fourth values must be set for a successful resolution.
+
+The method returns a list of Result objects each of which include the Global Country Code (GCC) for the country matching the Country Code / ECC and RDS PI Code / DAB SId combination. In most cases the list will contain only one result, however more may be returned in some cases.
 
 Example:
 
