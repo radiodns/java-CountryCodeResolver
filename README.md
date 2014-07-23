@@ -38,7 +38,7 @@ The four values which can be set are:
 3. The RDS PI Code received from FM broadcast.
 4. The DAB SID received from DAB broadcast. 
 
-A combination of the first or second, and third or forth values must be set for a successful resolution.
+A combination of the first or second, and third or forth values must be set for a successful resolution. Alternatively if a 32-bit (8 character hexadecimal) DAB SId is provided an ECC value does not need to be set separately.
 
 The method returns a list of Result objects each of which include the Global Country Code (GCC) for the country matching the Country Code and RDS PI Code / DAB SID combination. In most cases the list will contain only one result, however more may be returned in some cases.
 

@@ -131,6 +131,11 @@ public class Resolver {
 		}
 		mRdsPi = null;
 		mDabSId = dabSId;
+		
+		if (mDabSId.length() == 8) {
+			mEcc = String.valueOf(mDabSId.charAt(0)) + String.valueOf(mDabSId.charAt(1));
+			mIsoCountryCode = null;
+		}
 	}
 	
 	/**
@@ -150,7 +155,6 @@ public class Resolver {
 		} else if (mDabSId != null && mDabSId.length() == 4) {
 			broadcastCountryId = String.valueOf(mDabSId.charAt(0));
 		} else if (mDabSId != null && mDabSId.length() == 8) {
-			mEcc = String.valueOf(mDabSId.charAt(0)) + String.valueOf(mDabSId.charAt(1));
 			broadcastCountryId = String.valueOf(mDabSId.charAt(2));
 		} else {
 			throw new IllegalStateException(
