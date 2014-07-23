@@ -147,8 +147,11 @@ public class Resolver {
 		// select the broadcast country ID from either the RDS PI or DAB SId values
 		if (mRdsPi != null) {
 			broadcastCountryId = String.valueOf(mRdsPi.charAt(0));
-		} else if (mDabSId != null) {
+		} else if (mDabSId != null && mDabSId.length() == 4) {
 			broadcastCountryId = String.valueOf(mDabSId.charAt(0));
+		} else if (mDabSId != null && mDabSId.length() == 8) {
+			mEcc = String.valueOf(mDabSId.charAt(0)) + String.valueOf(mDabSId.charAt(1));
+			broadcastCountryId = String.valueOf(mDabSId.charAt(2));
 		} else {
 			throw new IllegalStateException(
 					"RDS Programme Identification (PI) OR Service Identifier (SId) must be set before attempting to resolve");

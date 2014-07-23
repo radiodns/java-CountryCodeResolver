@@ -85,6 +85,17 @@ public class ResolutionTests {
 		List<Result> actualResult = resolver.resolveGCC();
 		assertEquals("GB + C479 must return one result of ce1", expectedResult, actualResult);
 	}
+	
+	@Test
+	public void testCorrectCountryCodeWith32bitSID1() throws ResolutionException {
+		List<Result> expectedResult = new ArrayList<Result>(); 
+		expectedResult.add(new Result("C", "E1", "GB"));
+		
+		Resolver resolver = new Resolver();
+		resolver.setDabSId("E1C00098");
+		List<Result> actualResult = resolver.resolveGCC();
+		assertEquals("GB + C479 must return one result of ce1", expectedResult, actualResult);
+	}
 
 	/*
 	 * Tests where the given PI Code doesn't match the Country Code but does of
