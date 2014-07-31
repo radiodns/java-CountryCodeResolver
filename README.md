@@ -1,15 +1,13 @@
 java-CountryCodeResolver
 ================
 
-Version 0.3 Beta
+Version 1.0
 
 ### Introduction
 
 This library helps with RadioDNS lookups by resolving the Global Country Code (GCC) value required to identify a radio service being consumed.
 
 It is common for FM broadcasts to lack RDS ECC, a field which would otherwise confirm the country of origin of the broadcast. Other information such as the physical location of the device could be used on its own, however that doesn't consider the scenario of being on or close to a country border. This library enables the accurate resolution of the country of origin by taking as inputs the RDS PI or DAB SID and the two-letter country code of the physical location of the radio device or Extended Country Code (ECC).
-
-This is beta code which requires further work.
 
 For more information about RadioDNS, please see the official documentation: [http://radiodns.org/documentation/](http://radiodns.org/documentation/)
  
@@ -151,4 +149,4 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and 
 limitations under the License.
 
-Copyright (c) 2013 Global Radio UK Limited
+Copyright (c) 2014 Global Radio UK Limited

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013 Global Radio UK Limited
+ * Copyright (c) 2014 Global Radio UK Limited
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ import org.junit.runners.Suite.SuiteClasses;
 
 /**
  * @author Byrion Smith <byrion.smith@thisisglobal.com>
- * @version 0.3
+ * @version 1.0
  */
 @RunWith(Suite.class)
 @SuiteClasses({ ExceptionTests.class, ResolutionTests.class })
