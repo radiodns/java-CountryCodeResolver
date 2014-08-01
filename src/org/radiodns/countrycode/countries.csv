@@ -68,7 +68,7 @@ Estonia,EE,E4,2,6:FI;9:LV;7:RU;E:SE
 Ethiopia,ET,D1,E,3:DJ;6:KE;7:SO;C:SD
 Falkland Islands,FK,A2,4,A:AR
 Faroe Islands,FO,E1,9,A:IS;F:NO;C:GB
-Fiji,FJ,F1,5,9:NZ;3:TO;F:VU
+Fiji,FJ,F1,5,3:TO;F:VU
 Finland,FI,E1,6,2:EE;F:NO;7:RU;E:SE
 France,FR,E1,F,3:AD;6:BE;D:DE;1:DE;5:IT;7:LU;B:MC;E:ES;4:CH;C:GB
 French Polynesia,PF,XXXX,XXXX,1:KI
@@ -97,6 +97,7 @@ Indonesia,ID,F2,C,1:AU;2:AU;3:AU;4:AU;5:AU;6:AU;7:AU;8:AU;F:MY;9:PG;A:SG
 Iran,IR,F1,8,A:AF;A:AM;B:AZ;B:IQ;1:KW;6:OM;4:PK;2:QA;9:SA;3:TR;E:TM;D:AE
 Iraq,IQ,E1,B,8:IR;5:JO;1:KW;9:SA;3:TR
 Ireland,IE,E3,2,C:GB
+Isle of Man,IM,XXXX,XXXX,C:GB,2:IE
 Israel,IL,E0,4,2:CY;F:EG;5:JO;A:LB
 Italy,IT,E0,5,9:AL;2:DZ;A:AT;C:HR;F:FR;1:GR;D:LY;3:SM;9:SI;E:ES;4:CH;7:TN;4:VA
 Jamaica,JM,A3,3,2:CO;9:CU;D:HT;7:KY
@@ -145,7 +146,7 @@ Nauru,NR,F1,7,1:KI
 Nepal,NP,F2,E,5:IN;C:CN
 Netherlands,NL,E3,8,6:BE;D:DE;1:DE;A:KN;C:GB;E:VE;1:AI;F:VI
 New Caledonia,NC,XXXX,XXXX,9:PG;A:SB;F:VU
-New Zealand,NZ,F1,9,5:FJ
+New Zealand,NZ,F1,9,
 Nicaragua,NI,A3,7,8:CR;C:SV;2:HN
 Niger,NE,D2,8,2:DZ;E:BJ;B:BF;9:TD;D:LY;5:ML;F:NG
 Nigeria,NG,D1,F,E:BJ;1:CM;9:TD;7:GQ;3:GH;8:NE
