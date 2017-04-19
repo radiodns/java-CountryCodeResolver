@@ -94,7 +94,7 @@ public class ResolutionTests {
 		Resolver resolver = new Resolver();
 		resolver.setDabSId("E1C00098");
 		List<Result> actualResult = resolver.resolveGCC();
-		assertEquals("GB + C479 must return one result of ce1", expectedResult, actualResult);
+		assertEquals("E1C00098 must return one result of ce1", expectedResult, actualResult);
 	}
 
 	/*
