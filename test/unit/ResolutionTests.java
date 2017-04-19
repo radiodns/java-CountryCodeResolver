@@ -68,7 +68,7 @@ public class ResolutionTests {
 		resolver.setIsoCountryCode("AT");
 		resolver.setRdsPiCode("A479");
 		List<Result> actualResult = resolver.resolveGCC();
-		assertEquals("AT + 5479 must return one result of ae0", expectedResult, actualResult);
+		assertEquals("AT + A479 must return one result of ae0", expectedResult, actualResult);
 	}
 	
 	/*
