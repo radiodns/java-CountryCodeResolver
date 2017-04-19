@@ -122,7 +122,7 @@ public class ResolutionTests {
 		resolver.setIsoCountryCode("GB");
 		resolver.setRdsPiCode("2479");
 		List<Result> actualResult = resolver.resolveGCC();	
-		assertEquals("GB + 2479 must return one result of ie3", expectedResult, actualResult);
+		assertEquals("GB + 2479 must return one result of 2e3", expectedResult, actualResult);
 	}
 
 	@Test
