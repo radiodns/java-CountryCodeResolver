@@ -16,7 +16,7 @@ Bahamas,BS,A2,F,1:US;2:US;3:US;4:US;5:US;6:US;7:US;8:US;9:US;A:US;B:US;D:US;E:US
 Bahrain,BH,F0,E,8:IR;2:QA;9:SA
 Bangladesh,BD,F1,3,B:MM;5:IN
 Barbados,BB,A2,5,F:GY;C:VC;6:TT;E:VE
-Belarus,BY,E3,F,9:LV;C:LT;8:PL;7:RU;6:UA
+Belarus,BY,E3,F,9:LV;C:LT;3:PL;7:RU;6:UA
 Belgium,BE,E0,6,F:FR;D:DE;1:DE;7:LU;8:NL;C:GB
 Belize,BZ,A2,6,1:GT;2:HN;F:MX
 Benin,BJ,D0,E,B:BF;3:GH;8:NE;F:NG;D:TG
@@ -54,8 +54,8 @@ Croatia,HR,E3,C,F:BA;B:HU;5:IT;1:ME;D:RS;9:SI
 Cuba,CU,A2,9,D:HT;2:HN;3:JM;7:KY
 Curaao,CW,XXXX,XXXX,B:DO;E:VE
 Cyprus,CY,E1,2,F:EG;1:GR;4:IL;A:LB;3:TR
-Czech Republic,CZ,E2,2,A:AT;D:DE;1:DE;8:PL;5:SK
-Denmark,DK,E1,9,D:DE;1:DE;F:NO;8:PL;E:SE;C:GB
+Czech Republic,CZ,E2,2,A:AT;D:DE;1:DE;3:PL;5:SK
+Denmark,DK,E1,9,D:DE;1:DE;F:NO;3:PL;E:SE;C:GB
 Djibouti,DJ,D0,3,E:ET;7:SO;B:YE
 Dominica,DM,A3,A,F:FR;E:VE
 Dominican Republic,DO,A3,B,2:CO;D:HT;3:AW;8:PR;E:TC
@@ -75,7 +75,7 @@ French Polynesia,PF,XXXX,XXXX,1:KI
 Gabon,GA,D0,8,1:CM;C:CG;7:GQ
 The Gambia,GM,D1,8,6:CV;7:SN
 Georgia,GE,E4,C,A:AM;B:AZ;7:RU;3:TR;6:UA
-Germany,DE,E0,D;1,A:AT;6:BE;2:CZ;9:DK;F:FR;7:LU;8:NL;8:PL;E:SE;4:CH;C:GB
+Germany,DE,E0,D;1,A:AT;6:BE;2:CZ;9:DK;F:FR;7:LU;8:NL;3:PL;E:SE;4:CH;C:GB
 Ghana,GH,D1,3,E:BJ;B:BF;C:CI;F:NG;D:TG
 Gibraltar,GI,E1,A,1:MA;E:ES
 Greece,GR,E1,1,9:AL;8:BG;2:CY;F:EG;5:IT;D:LY;3:MK;3:TR
@@ -118,7 +118,7 @@ Lesotho,LS,D3,6,A:ZA
 Liberia,LR,D1,2,C:CI;9:GN;1:SL
 Libya,LY,E1,D,2:DZ;9:TD;F:EG;1:GR;5:IT;8:NE;C:SD;7:TN
 Liechtenstein,LI,E2,9,A:AT;4:CH
-Lithuania,LT,E2,C,F:BY;9:LV;8:PL;7:RU;E:SE
+Lithuania,LT,E2,C,F:BY;9:LV;3:PL;7:RU;E:SE
 Luxembourg,LU,E1,7,6:BE;F:FR;D:DE;1:DE
 Macau,MO,F2,6,
 Republic of Macedonia,MK,E4,3,9:AL;8:BG;1:GR;D:RS
@@ -167,7 +167,7 @@ Portugal,PT,E4,8,1:MA;E:ES
 Puerto Rico,PR,A3,8,B:DO;E:VE;F:VG
 Qatar,QA,F2,2,E:BH;8:IR;9:SA;D:AE
 Romania,RO,E1,E,8:BG;B:HU;1:MD;D:RS;3:TR;6:UA
-Russia,RU,E0,7,B:AZ;F:BY;C:CN;2:EE;6:FI;C:GE;D:KZ;9:LV;C:LT;F:MN;F:NO;8:PL;E:SE;6:UA;1:US;2:US;3:US;4:US;5:US;6:US;7:US;8:US;9:US;A:US;B:US;D:US;E:US
+Russia,RU,E0,7,B:AZ;F:BY;C:CN;2:EE;6:FI;C:GE;D:KZ;9:LV;C:LT;F:MN;F:NO;3:PL;E:SE;6:UA;1:US;2:US;3:US;4:US;5:US;6:US;7:US;8:US;9:US;A:US;B:US;D:US;E:US
 Rwanda,RW,D3,5,9:BI;D:TZ;4:UG
 Saint Barthlemy,BL,XXXX,XXXX,2:AG;8:NL;A:KN
 Saint Helena Ascension and Tristan da Cunha,SH,D1,A,
@@ -184,7 +184,7 @@ Serbia,RS,E2,D,9:AL;F:BA;8:BG;C:HR;B:HU;3:MK;1:ME;E:RO
 Seychelles,SC,A4,B,C:KM;4:MG;A:MU;D:TZ
 Sierra Leone,SL,D2,1,9:GN;2:LR
 Singapore,SG,F2,A,C:ID;F:MY
-Slovakia,SK,E2,5,A:AT;2:CZ;B:HU;8:PL;6:UA
+Slovakia,SK,E2,5,A:AT;2:CZ;B:HU;3:PL;6:UA
 Slovenia,SI,E4,9,A:AT;C:HR;5:IT;B:HU
 Solomon Islands,SB,F1,A,1:AU;2:AU;3:AU;4:AU;5:AU;6:AU;7:AU;8:AU;9:PG;F:VU
 Somalia,SO,D2,7,3:DJ;E:ET;6:KE;B:YE
@@ -196,7 +196,7 @@ Sudan,SD,D3,C,2:CF;9:TD;F:EG;E:ET;D:LY
 Suriname,SR,A4,8,B:BR;F:FR;F:GY
 Svalbard,SJ,XXXX,XXXX,7:RU;F:GL
 Swaziland,SZ,D2,5,3:MZ;A:ZA
-Sweden,SE,E3,E,9:DK;2:EE;6:FI;D:DE;1:DE;C:LT;F:NO;8:PL;7:RU
+Sweden,SE,E3,E,9:DK;2:EE;6:FI;D:DE;1:DE;C:LT;F:NO;3:PL;7:RU
 Switzerland,CH,E1,4,A:AT;F:FR;5:IT;9:LI;D:DE;1:DE
 Taiwan,TW,F1,D,C:CN;9:JP;8:PH
 Tajikistan,TJ,E3,5,A:AF;C:CN;3:KG;B:UZ
@@ -212,7 +212,7 @@ Turkmenistan,TM,E4,E,A:AF;8:IR;D:KZ;B:UZ
 Turks and Caicos Islands,TC,A3,E,F:BS;B:DO;D:HT
 Tuvalu,TV,XXXX,XXXX,5:FJ;1:KI
 Uganda,UG,D2,4,6:KE;5:RW;D:TZ
-Ukraine,UA,E4,6,F:BY;B:HU;C:GE;1:MD;8:PL;E:RO;7:RU;5:SK;3:TR
+Ukraine,UA,E4,6,F:BY;B:HU;C:GE;1:MD;3:PL;E:RO;7:RU;5:SK;3:TR
 United Arab Emirates,AE,F2,D,8:IR;6:OM;2:QA;9:SA
 United Kingdom,GB,E1,C,6:BE;9:DK;F:FR;D:DE;1:DE;2:IE;8:NL
 United States,US,A0,1;2;3;4;5;6;7;8;9;A;B;D;E,C:CA;9:CU;1:KI;F:MX;7:RU
