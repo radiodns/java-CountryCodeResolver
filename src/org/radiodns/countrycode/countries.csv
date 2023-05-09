@@ -35,7 +35,7 @@ Burma,MM,F0,B,3:BD;C:CN;5:IN;1:LA;2:TH
 Burundi,BI,D1,9,5:RW;D:TZ
 Cambodia,KH,F2,3,1:LA;2:TH;7:VN
 Cameroon,CM,D0,1,2:CF;9:TD;C:CG;7:GQ;8:GA;F:NG
-Canada,CA,A1,C,1:US;2:US;3:US;4:US;5:US;6:US;7:US;8:US;9:US;A:US;B:US;D:US;E:US;F:GL;F:PM
+Canada,CA,A1,C;B2;B3;B4;B5;B6;B7,1:US;2:US;3:US;4:US;5:US;6:US;7:US;8:US;9:US;A:US;B:US;D:US;E:US;F:GL;F:PM
 Cape Verde,CV,D1,6,8:GM;4:MR;7:SN
 Cayman Islands,KY,A2,7,9:CU;3:JM
 Central African Republic,CF,D0,2,1:CM;9:TD;C:CG;C:SD
@@ -132,7 +132,7 @@ Marshall Islands,MH,XXXX,XXXX,1:KI;E:FM;7:NR
 Mauritania,MR,D1,4,2:DZ;6:CV;5:ML;1:MA;7:SN;3:EH
 Mauritius,MU,D3,A,F:FR;B:SC
 Mayotte,YT,XXXX,XXXX,C:KM;4:MG
-Mexico,MX,A5,F,6:BZ;1:GT;1:US;2:US;3:US;4:US;5:US;6:US;7:US;8:US;9:US;A:US;B:US;D:US;E:US
+Mexico,MX,A5,B;D;E;F,6:BZ;1:GT;1:US;2:US;3:US;4:US;5:US;6:US;7:US;8:US;9:US;A:US;B:US;D:US;E:US
 Federated States of Micronesia,FM,F3,E,9:PG
 Moldova,MD,E4,1,E:RO;6:UA
 Monaco,MC,E2,B,F:FR
@@ -215,7 +215,7 @@ Uganda,UG,D2,4,6:KE;5:RW;D:TZ
 Ukraine,UA,E4,6,F:BY;B:HU;C:GE;1:MD;3:PL;E:RO;7:RU;5:SK;3:TR
 United Arab Emirates,AE,F2,D,8:IR;6:OM;2:QA;9:SA
 United Kingdom,GB,E1,C,6:BE;9:DK;F:FR;D:DE;1:DE;2:IE;8:NL
-United States,US,A0,1;2;3;4;5;6;7;8;9;A;B;D;E,C:CA;9:CU;1:KI;F:MX;7:RU
+United States,US,A0,1;2;3;4;5;6;7;8;9;A;B1;B8;B9;BA;BB;BC;BD;BE;BF;D;E,C:CA;9:CU;1:KI;F:MX;7:RU
 United States Virgin Islands,VI,A5,F,8:NL;E:VE;1:AI;F:VG
 Uruguay,UY,A4,9,A:AR;B:BR
 Uzbekistan,UZ,E4,B,A:AF;D:KZ;3:KG;5:TJ;E:TM
